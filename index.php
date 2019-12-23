@@ -1,0 +1,87 @@
+<?php
+
+    session_start();
+
+    require_once("controllers/ProductsController.php");
+    require_once("controllers/ProductsControllerREST.php");
+
+    define("BASE_URL", rtrim($_SERVER["SCRIPT_NAME"], "index.php"));
+
+    define("IMAGES_URL", rtrim($_SERVER["SCRIPT_NAME"], "index.php") . "static/images/");
+    define("CSS_URL", rtrim($_SERVER["SCRIPT_NAME"], "index.php") . "static/css/");
+
+    $path = isset($_SERVER["PATH_INFO"]) ? trim($_SERVER["PATH_INFO"], "/") : "";
+
+    $urls = [
+        "/^products$/" => function ($method) {
+            ProductsController::index();
+        },
+        "/^products\/(\d+)$/" => function ($method, $id) {
+            ProductsController::get($id);
+        },
+        "/^products\/add$/" => function ($method) {
+            if ($method == "POST") {
+                ProductsController::add();
+            } else {
+                ProductsController::addForm();
+            }
+        },
+        "/^products\/edit\/(\d+)$/" => function ($method, $id) {
+            if ($method == "POST") {
+                ProductsController::edit($id);
+            } else {
+                ProductsController::editForm($id);
+            }
+        },
+        "/^products\/delete\/(\d+)$/" => function ($method, $id) {
+            if ($method == "POST") {
+                ProductsController::delete($id);
+            }
+        },
+        "/^$/" => function () {
+            ViewHelper::redirect(BASE_URL . "products");
+        },
+        # REST API
+        "/^api\/products\/(\d+)$/" => function ($method, $id) {
+            // TODO: izbris knjige z uporabo HTTP metode DELETE
+            switch ($method) {
+                case "DELETE":
+                    ProductsControllerREST::delete($id);
+                    break;
+                case "PUT":
+                    ProductsControllerREST::edit($id);
+                    break;
+                default: # GET
+                    ProductsControllerREST::get($id);
+                    break;
+            }
+        },
+        "/^api\/products$/" => function ($method) {
+            switch ($method) {
+                case "POST":
+                    ProductsControllerREST::add();
+                    break;
+                default: # GET
+                    ProductsControllerREST::index();
+                    break;
+            }
+        },
+    ];
+
+    foreach ($urls as $pattern => $controller) {
+        if (preg_match($pattern, $path, $params)) {
+            try {
+                $params[0] = $_SERVER["REQUEST_METHOD"];
+                $controller(...$params);
+            } catch (InvalidArgumentException $e) {
+                ViewHelper::error404();
+            } catch (Exception $e) {
+                ViewHelper::displayError($e, true);
+            }
+
+            exit();
+        }
+    }
+
+    ViewHelper::displayError(new InvalidArgumentException("No controller matched."), true);
+?>
