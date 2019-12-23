@@ -4,7 +4,7 @@ header('X-Content-Type-Options: nosniff');
 header("X-XSS-Protection: 1; mode=block");
 
 require_once("model/ProductDB.php");
-require_once("controller/ProductsController.php");
+require_once("controllers/ProductsController.php");
 require_once("ViewHelper.php");
 
 class ProductsControllerREST {
