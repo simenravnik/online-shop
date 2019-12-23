@@ -42,9 +42,9 @@ CREATE TABLE `product` (
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
 INSERT INTO `product` VALUES
-(1,'Gamepad Logitech F510','F510 igralni plošček podpira vse vrste iger. Priložena Logitech programska oprema omogoča uporabo ploščka tudi pri igrah, ki tega ne podpirajo. Igranje bo postalo še večji užitek zaradi dveh vgrajenih vibracijskih motorjev, domače postavitve gumbov in edinstvene oblike D-ploščka.', 40.00, true),
-(2,'Pametni telefon Huawei P20 Lite moder','Telefon boste sedaj lahko odklepali s svojim obrazom, vgrajeni 4GB delovnega spomina pa omogočajo hitro uporabo in nemoteno preklapljanje med aplikacijami. Na zadnji strani je Huawei v svoji “Lite” različici P serije prvič ponudil dve kameri – 16MP in 2MP. Da bo telefon z lahkoto sledil vašemu živahnemu življenskemu stilu, bo 3000 mAh baterija s funkcijo Quick Charge napolnjena hitro in varno.', 299.99, true),
-(3,'Tablični računalnik SAMSUNG GALAXY TAB S2','Uživajte še več fleksibilnosti z Galaxy Tab S2 kot kdajkoli prej. Zaradi njegovih izjemno tankih in ultra-lahkih značilnosti lahko napravo uporabljate za branje e-knjig, pregledovanje fotografij, video posnetkov in datotek, povezanih z vašim delom, kjerkoli že ste.', 479.99, true);
+(1,'Mleko','Polnomastno mleko z najvec okusa.', 2.00, true),
+(2,'Jajca','Jajca baterijske reje (niso videla svetlobe).', 5.99, true),
+(3,'Kruh','Hribovc, domaci.', 2.99, true);
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -75,9 +75,9 @@ CREATE TABLE `user` (
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 INSERT INTO `user` VALUES
-(1,'Matic', 'Zahradnik', 'matic@ep.si', '$2y$10$rxQX9QnpsV4PVnx7EMwJGuE5beH/52i7lQBDfljDLm6zy6d.hCPSi', 0, '', '', '', true),
-(2, 'Vanesa', 'Godec', 'vanesa@ep.si', '$2y$10$HEV/K2FkedHZc9N.ayjkUOmzbyuLnO1yj/Q6iFddqo2IVc.4IUmOC', 1, '', '', '', true),
-(3, 'Maja', 'Lobnik', 'maja@lobnik.si', '$2y$10$LOja/YT0WBqIYYJYtgyLxeBBOl8ceZLHip/ss3clw3C/YnL/u6p.q', 2, 'Večna pot 113', 5, '040123456', true);
+(1,'Simen', 'Ravnik', 'simen@ep.si', '$2y$10$rxQX9QnpsV4PVnx7EMwJGuE5beH/52i7lQBDfljDLm6zy6d.hCPSi', 0, '', '', '', true),
+(2, 'Jure', 'Vito', 'vito@ep.si', '$2y$10$HEV/K2FkedHZc9N.ayjkUOmzbyuLnO1yj/Q6iFddqo2IVc.4IUmOC', 1, '', '', '', true),
+(3, 'Jure', 'Srovin', 'jure@ep.si', '$2y$10$LOja/YT0WBqIYYJYtgyLxeBBOl8ceZLHip/ss3clw3C/YnL/u6p.q', 2, 'Večna pot 113', 5, '040123456', true);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
