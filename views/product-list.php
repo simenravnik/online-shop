@@ -87,7 +87,7 @@ switch ($data["do"]) {
         <div id ="main">
             <?php
             foreach ($products as $product): ?>
-                <div class="article">
+                <div class="product">
                     <form action="<?= BASE_URL . "products" ?>" method="post">
                         <input type="hidden" name="do" value="add_into_cart" />
                         <input type="hidden" name="id" value="<?= $product["id"] ?>" />
