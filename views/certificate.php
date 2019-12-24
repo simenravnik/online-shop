@@ -77,7 +77,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                     $_SESSION["zipcode_id"] = $zipcode_id;
                                     $_SESSION["phone"] = $phone;
                                     $_SESSION["activated"] = $activated;
-                                    CtrlLogin::logged_in();
+                                    LoginController::logged_in();
                                 } else {
                                     $password_err = "Prijava neaktiviranim uporabnikom ni mogoča.";
                                 }
@@ -95,7 +95,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                     $_SESSION["zipcode_id"] = $zipcode_id;
                                     $_SESSION["phone"] = $phone;
                                     $_SESSION["activated"] = $activated;
-                                    CtrlLogin::logged_in();
+                                    LoginController::logged_in();
                                 } else {
                                     // Display an error message if password is not valid
                                     //$password_err = "Napačno geslo!";
