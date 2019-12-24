@@ -11,6 +11,9 @@
     require_once("controllers/LogoutController.php");
     require_once("controllers/RegistrationController.php");
 
+    # EDITING USERS
+    require_once("controllers/UsersController.php");
+
     define("BASE_URL", rtrim($_SERVER["SCRIPT_NAME"], "index.php"));
 
     define("IMAGES_URL", rtrim($_SERVER["SCRIPT_NAME"], "index.php") . "static/images/");
@@ -57,6 +60,40 @@
         },
         "/^registration$/" => function ($method) {
             RegistrationController::indexReg();
+        },
+        # EDITING PROFILE
+        "/^profile\/(\d+)$/" => function ($method, $id) {
+            if ($method == "POST") {
+                UsersController::editProfile($id);
+            } else {
+                UsersController::editProfileForm($id);
+            }
+        },
+        # EDITING USERS
+        "/^users$/" => function ($method) {
+            UsersController::index();
+        },
+        "/^users\/(\d+)$/" => function ($method, $id) {
+            UsersController::get($id);
+        },
+        "/^users\/add$/" => function ($method) {
+            if ($method == "POST") {
+                UsersController::add();
+            } else {
+                UsersController::addForm();
+            }
+        },
+        "/^users\/edit\/(\d+)$/" => function ($method, $id) {
+            if ($method == "POST") {
+                UsersController::edit($id);
+            } else {
+                UsersController::editForm($id);
+            }
+        },
+        "/^users\/delete\/(\d+)$/" => function ($method, $id) {
+            if ($method == "POST") {
+                UsersController::delete($id);
+            }
         },
         # REST API
         "/^api\/products\/(\d+)$/" => function ($method, $id) {
