@@ -2,8 +2,14 @@
 
     session_start();
 
+    # PRODUCTS CONTROLLERS
     require_once("controllers/ProductsController.php");
     require_once("controllers/ProductsControllerREST.php");
+
+    # REGISTRATION AND LOGIN CONTROLLERS
+    require_once("controllers/LoginController.php");
+    require_once("controllers/LogoutController.php");
+    require_once("controllers/RegistrationController.php");
 
     define("BASE_URL", rtrim($_SERVER["SCRIPT_NAME"], "index.php"));
 
@@ -13,6 +19,7 @@
     $path = isset($_SERVER["PATH_INFO"]) ? trim($_SERVER["PATH_INFO"], "/") : "";
 
     $urls = [
+        # PRODUCTS
         "/^products$/" => function ($method) {
             ProductsController::index();
         },
@@ -40,6 +47,16 @@
         },
         "/^$/" => function () {
             ViewHelper::redirect(BASE_URL . "products");
+        },
+        # REGISTRATION AND LOGIN
+        "/^logout$/" => function ($method) {
+            LogoutController::logout();
+        },
+        "/^login$/" => function ($method) {
+            LoginController::index();
+        },
+        "/^registration$/" => function ($method) {
+            RegistrationController::indexReg();
         },
         # REST API
         "/^api\/products\/(\d+)$/" => function ($method, $id) {
