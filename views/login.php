@@ -74,7 +74,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                         $_SESSION["zipcode_id"] = $zipcode_id;
                                         $_SESSION["phone"] = $phone;
                                         $_SESSION["activated"] = $activated;
-                                        CtrlLogin::logged_in();
+                                        LoginController::logged_in();
                                     } else {
                                         $email_err = "$uporabnikEmail ni avtoriziran uporabnik!";
                                     }
