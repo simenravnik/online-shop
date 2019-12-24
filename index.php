@@ -61,6 +61,10 @@
         "/^registration$/" => function ($method) {
             RegistrationController::indexReg();
         },
+        # LOGIN WITH CERTIFICATE
+        "/^certificate$/" => function ($method) {
+            LoginController::certificateAuth();
+        },
         # EDITING PROFILE
         "/^profile\/(\d+)$/" => function ($method, $id) {
             if ($method == "POST") {
