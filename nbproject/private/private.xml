@@ -11,17 +11,29 @@
             <!-- controllers -->
             <file>file:/home/ep/NetBeansProjects/online-shop/controller/ProductsController.php</file>
             <file>file:/home/ep/NetBeansProjects/online-shop/controller/ProductsControllerREST.php</file>
+            <file>file:/home/ep/NetBeansProjects/online-shop/controller/LoginController.php</file>
+            <file>file:/home/ep/NetBeansProjects/online-shop/controller/LogoutController.php</file>
+            <file>file:/home/ep/NetBeansProjects/online-shop/controller/RegistrationController.php</file>
+            <file>file:/home/ep/NetBeansProjects/online-shop/controller/UsersController.php</file>
 
             <!-- model -->
             <file>file:/home/ep/NetBeansProjects/online-shop/model/AbstractDB.php</file>
             <file>file:/home/ep/NetBeansProjects/online-shop/model/DB.php</file>
             <file>file:/home/ep/NetBeansProjects/online-shop/model/ProductDB.php</file>
+            <file>file:/home/ep/NetBeansProjects/online-shop/model/UserDB.php</file>
 
             <!-- views -->
             <file>file:/home/ep/NetBeansProjects/online-shop/view/product-list.php</file>
             <file>file:/home/ep/NetBeansProjects/online-shop/view/product-add.php</file>
             <file>file:/home/ep/NetBeansProjects/online-shop/view/product-detail.php</file>
             <file>file:/home/ep/NetBeansProjects/online-shop/view/product-edit.php</file>
+            <file>file:/home/ep/NetBeansProjects/online-shop/view/login.php</file>
+            <file>file:/home/ep/NetBeansProjects/online-shop/view/logout.php</file>
+            <file>file:/home/ep/NetBeansProjects/online-shop/view/registration.php</file>
+            <file>file:/home/ep/NetBeansProjects/online-shop/view/user-add.php</file>
+            <file>file:/home/ep/NetBeansProjects/online-shop/view/user-detail.php</file>
+            <file>file:/home/ep/NetBeansProjects/online-shop/view/user-edit.php</file>
+            <file>file:/home/ep/NetBeansProjects/online-shop/view/user-list.php</file>
 
             <!-- database -->
             <file>file:/home/ep/NetBeansProjects/online-shop/sql/db.sql</file>
