@@ -129,7 +129,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             // Attempt to execute the prepared statement
             if($stmt->execute()){
                 // Redirect to login page
-                CtrlRegistration::login();
+                RegistrationController::login();
             } else{
                 echo "Nekaj je šlo narobe, poskusite znova.";
             }
