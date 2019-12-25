@@ -119,7 +119,7 @@ switch ($data["do"]) {
                            <a class="nav-link" href="<?= BASE_URL . "profile/" . $_SESSION["id"] ?>">Edit profile</a>
                         </li>
                         <li class="nav-item">
-                           <a class="nav-link" href="<?= BASE_URL . "logout" ?>">Logout</a>
+                           <a class="nav-link btn btn-danger" href="<?= BASE_URL . "logout" ?>">Logout</a>
                         </li>
                 <?php } ?>
              </ul>
@@ -135,54 +135,53 @@ switch ($data["do"]) {
             <div class="col-lg-3">
 
               <h1 class="my-4">Products</h1>
-              <div class="list-group">
                  <?php if(isset($_SESSION["loggedin"]) && $_SESSION["type"] == 2) { ?>
                     <div class="cart">
-                        <h3>Košarica</h3>
+                        <h3>Cart</h3>
 
                         <?php
                         $kosara = isset($_SESSION["cart"]) ? $_SESSION["cart"] : [];
 
                         if ($kosara) {
                              $znesek = 0;
-                             foreach ($kosara as $id => $kolicina):
-                                 $product = ProductDB::get(array("id" => $id));
-                                 $znesek += $product["price"] * $kolicina;
-                                 ?>
-                                 <form action="<?= BASE_URL . "products" ?>" method="post">
-                                     <input type="hidden" name="do" value="update_cart" />
-                                     <input type="hidden" name="id" value="<?= $product["id"] ?>" />
-                                     <input type="number" name="kolicina" value="<?= $kolicina ?>"
-                                           class="short_input" />
-                                     &times; <?=
-                                     (strlen($product["title"]) < 50) ?
-                                             $product["title"] :
-                                             substr($product["title"], 0, 26) . " ..."
-                                     ?> (<?= number_format($product["price"], 2) ?> €)
-                                     <button class="update-cart" type="submit"><i class="fas fa-sync-alt"></i> Posodobi</button>
-                                 </form>
-                             <?php endforeach; ?>
-
-                             <p>Skupaj: <b><?= number_format($znesek, 2) ?> EUR</b></p>
+                                foreach ($kosara as $id => $kolicina):
+                                    $product = ProductDB::get(array("id" => $id));
+                                    $znesek += $product["price"] * $kolicina;
+                                    ?>
+                                    <form action="<?= BASE_URL . "products" ?>" method="post">
+                                        <input type="hidden" name="do" value="update_cart" />
+                                        <input type="hidden" name="id" value="<?= $product["id"] ?>" />
+                                        <div class="list-group">
+                                           <li class="list-group-item">
+                                              <?=
+                                              (strlen($product["title"]) < 50) ?
+                                                      $product["title"] :
+                                                      substr($product["title"], 0, 26) . " ..."
+                                              ?> (<?= number_format($product["price"], 2) ?> €)
+                                              <input type="number" name="kolicina" value="<?= $kolicina ?>" class="short_input" />
+                                           </li>
+                                        </div>
+                                        <br>
+                                    </form>
+                                <?php endforeach; ?>
+                             <p>Together: <b><?= number_format($znesek, 2) ?> EUR</b></p>
 
                              <form action="<?= BASE_URL . "orders/confirmation" ?>" method="POST">
-                                   <button type="submit" class="btn btn-success gumb"><i class="fas fa-receipt"></i></i> Pripravi naročilo</button>
+                                   <button type="submit" class="btn btn-success gumb"><i class="fas fa-receipt"></i></i>Complete order</button>
                              </form>
+                             <br>
                              <form action="<?= BASE_URL . "products" ?>" method="POST">
                                  <input type="hidden" name="do" value="purge_cart" />
-                                 <button type="submit" class="btn btn-danger gumb"><i class="fas fa-trash-alt"></i> Izprazni košarico</button>
+                                 <button type="submit" class="btn btn-danger gumb"><i class="fas fa-trash-alt"></i>Empty cart</button>
                              </form>
 
                         <?php } elseif(!isset($_SESSION["loggedin"])) { ?>
-                             Za dodajanje v košarico se je potrebno prijaviti.
+                             Login for adding to cart.
                         <?php } else { ?>
-                             Košara je prazna.
+                             Cart is empty.
                         <?php } ?>
                     </div>
                  <?php } ?>
-                <a href="#" class="list-group-item">Nutrition</a>
-              </div>
-
             </div>
             <!-- /.col-lg-3 -->
 
@@ -231,9 +230,9 @@ switch ($data["do"]) {
                             <input type="hidden" name="id" value="<?= $product["id"] ?>" />
                             <?php if(isset($_SESSION["loggedin"]) && $_SESSION["type"] == 2) { ?>
                                 <?php if($product["activated"] == 1) { ?>
-                                    <button type="submit" class="btn btn-info add-to-cart"><i class="fas fa-cart-plus"></i> V košarico</button>
+                                    <button type="submit" class="btn btn-info add-to-cart"><i class="fas fa-cart-plus"></i>Add to cart</button>
                                 <?php } else { ?>
-                                    <p>Trenutno ni na voljo</p>
+                                    <p>Not available at the moment</p>
                                 <?php } ?>
                             <?php } ?>
                         </form>
