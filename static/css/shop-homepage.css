@@ -6,3 +6,8 @@
 body {
   padding-top: 56px;
 }
+
+.btn-logout:hover, .btn-logout:focus, .btn-logout:active, .btn-logout.active, .open>.dropdown-toggle.btn-logout {
+    color: #d9534f;
+    background-color: #d9534f;
+}

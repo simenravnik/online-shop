@@ -72,7 +72,7 @@ switch ($data["do"]) {
     <head>
     <body>
         <!-- Navigation -->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top">
           <div class="container">
             <a class="navbar-brand" href="#">Online Shop</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -119,7 +119,7 @@ switch ($data["do"]) {
                            <a class="nav-link" href="<?= BASE_URL . "profile/" . $_SESSION["id"] ?>">Edit profile</a>
                         </li>
                         <li class="nav-item">
-                           <a class="nav-link btn btn-danger" href="<?= BASE_URL . "logout" ?>">Logout</a>
+                           <a class="nav-link btn btn-logout" href="<?= BASE_URL . "logout" ?>">Logout</a>
                         </li>
                 <?php } ?>
              </ul>
@@ -167,12 +167,12 @@ switch ($data["do"]) {
                              <p>Together: <b><?= number_format($znesek, 2) ?> EUR</b></p>
 
                              <form action="<?= BASE_URL . "orders/confirmation" ?>" method="POST">
-                                   <button type="submit" class="btn btn-success gumb"><i class="fas fa-receipt"></i></i>Complete order</button>
+                                   <button type="submit" class="btn btn-success gumb"><i class="fas fa-receipt"></i></i> Complete order</button>
                              </form>
                              <br>
                              <form action="<?= BASE_URL . "products" ?>" method="POST">
                                  <input type="hidden" name="do" value="purge_cart" />
-                                 <button type="submit" class="btn btn-danger gumb"><i class="fas fa-trash-alt"></i>Empty cart</button>
+                                 <button type="submit" class="btn btn-danger gumb"><i class="fas fa-trash-alt"></i> Empty cart</button>
                              </form>
 
                         <?php } elseif(!isset($_SESSION["loggedin"])) { ?>
@@ -230,7 +230,7 @@ switch ($data["do"]) {
                             <input type="hidden" name="id" value="<?= $product["id"] ?>" />
                             <?php if(isset($_SESSION["loggedin"]) && $_SESSION["type"] == 2) { ?>
                                 <?php if($product["activated"] == 1) { ?>
-                                    <button type="submit" class="btn btn-info add-to-cart"><i class="fas fa-cart-plus"></i>Add to cart</button>
+                                    <button type="submit" class="btn btn-outline-warning add-to-cart"><i class="fas fa-cart-plus"></i> Add to cart</button>
                                 <?php } else { ?>
                                     <p>Not available at the moment</p>
                                 <?php } ?>
@@ -254,6 +254,14 @@ switch ($data["do"]) {
 
         </div>
         <!-- /.container -->
+
+        <!-- Footer -->
+        <footer class="py-5 bg-light">
+          <div class="container">
+            <p class="m-0 text-center text-white">Copyright &copy; online-shop 2020</p>
+          </div>
+          <!-- /.container -->
+        </footer>
 
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
