@@ -72,7 +72,7 @@ switch ($data["do"]) {
     <head>
     <body>
         <!-- Navigation -->
-        <nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top">
+        <nav class="navbar navbar-expand-sm navbar-light fixed-top" style="background-color: #ffffff;">
           <div class="container">
             <a class="navbar-brand" href="#">Online Shop</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -158,7 +158,15 @@ switch ($data["do"]) {
                                                       $product["title"] :
                                                       substr($product["title"], 0, 26) . " ..."
                                               ?> (<?= number_format($product["price"], 2) ?> €)
-                                              <input type="number" name="kolicina" value="<?= $kolicina ?>" class="short_input" />
+                                              <div class="form-group row">
+                                                 <div class="col-8">
+                                                    <input type="number" class="form-control" name="kolicina" value="<?= $kolicina ?>" class="short_input" />
+                                                 </div>
+                                                 <div class="col-4">
+                                                    <button class="update-cart btn btn-primary" type="submit"><i class="fas fa-sync-alt"></i></button>
+                                                 </div>
+                                              </div>
+
                                            </li>
                                         </div>
                                         <br>
@@ -256,9 +264,9 @@ switch ($data["do"]) {
         <!-- /.container -->
 
         <!-- Footer -->
-        <footer class="py-5 bg-light">
+        <footer class="py-5" style="background-color: #F5F5F5;">
           <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; online-shop 2020</p>
+            <p class="m-0 text-center">Copyright &copy; online-shop 2020</p>
           </div>
           <!-- /.container -->
         </footer>
