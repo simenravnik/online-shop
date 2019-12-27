@@ -19,14 +19,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     // Check if email is empty
     if(empty(trim($_POST["email"]))){
-        $email_err = "Prosimo vnesite email.";
+        $email_err = "Please enter your email.";
     } else{
         $email = trim($_POST["email"]);
     }
 
     // Check if password is empty
     if(empty(trim($_POST["password"]))){
-        $password_err = "Prosimo vnesite geslo.";
+        $password_err = "Please enter your password.";
     } else{
         $password = trim($_POST["password"]);
     }
@@ -35,7 +35,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(empty($email_err) && empty($password_err)){
         $client_cert = filter_input(INPUT_SERVER, "SSL_CLIENT_CERT");
         if ($client_cert == null) {
-            die('err: Spremenljivka SSL_CLIENT_CERT ni nastavljena.');
+            die('ERROR: Spremenljivka SSL_CLIENT_CERT ni nastavljena.');
         }
         $cert_data = openssl_x509_parse($client_cert);
         $emailCert = (is_array($cert_data['subject']['emailAddress']) ?
@@ -99,20 +99,20 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                 } else {
                                     // Display an error message if password is not valid
                                     //$password_err = "Napačno geslo!";
-                                    echo "$uporabnikEmail ni avtoriziran uporabnik!";
+                                    echo "$uporabnikEmail is not authorized user!";
                                 }
                             } else {
-                                echo "$uporabnikEmail ni avtoriziran uporabnik!";
+                                echo "$uporabnikEmail is not authorized user!";
                             }
                         } else {
-                            $password_err = "Napačno geslo.";
+                            $password_err = "Wrong password!";
                         }
                     } else{
                         // Display an error message if email doesn't exist
-                        $email_err = "Račun s tem email naslovom ne obstaja.";
+                        $email_err = "Account with this email does not exist.";
                     }
                 } else{
-                    $email_err = "Račun s tem email naslovom ne obstaja.";
+                    $email_err = "Account with this email does not exist.";
                 }
                 // Close statement
                 $stmt->close();
