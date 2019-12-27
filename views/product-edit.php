@@ -45,7 +45,7 @@
                 <?php } else {
                     if($_SESSION["type"] == 1) { ?>
                         <li class="nav-item">
-                           <a class="nav-link active" href="<?= BASE_URL . "products/add" ?>">Add products</a>
+                           <a class="nav-link" href="<?= BASE_URL . "products/add" ?>">Add products</a>
                         </li>
                         <li class="nav-item">
                            <a class="nav-link" href="<?= BASE_URL . "users" ?>">Customers</a>
