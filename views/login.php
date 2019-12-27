@@ -17,14 +17,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     // Check if email is empty
     if(empty(trim($_POST["email"]))){
-        $email_err = "Prosimo vnesite email.";
+        $email_err = "Please enter your email.";
     } else{
         $email = trim($_POST["email"]);
     }
 
     // Check if password is empty
     if(empty(trim($_POST["password"]))){
-        $password_err = "Prosimo vnesite geslo.";
+        $password_err = "Please enter your password.";
     } else{
         $password = trim($_POST["password"]);
     }
@@ -69,20 +69,20 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                         $_SESSION["activated"] = $activated;
                                         LoginController::logged_in();
                                     } else {
-                                        $email_err = "$uporabnikEmail ni avtoriziran uporabnik!";
+                                        $email_err = "$uporabnikEmail Not authorized user!";
                                     }
                                 } else {
-                                    $password_err = "Napačno geslo!";
+                                    $password_err = "Wrong password!";
                                 }
                         } else {
-                            $email_err = "Vaš račun ni tipa STRANKA!";
+                            $email_err = "Your account is not of type customer.";
                         }
                     } else{
-                        echo "Nekaj je šlo narobe. Poskusite znova.";
+                        echo "Something went wrong, try again.";
                     }
                 } else{
                     // Display an error message if email doesn't exist
-                    $email_err = "Račun s tem email naslovom ne obstaja.";
+                    $email_err = "Account with this email does not exist.";
                 }
                 // Close statement
                 $stmt->close();
@@ -196,7 +196,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                        </div>
 
                        <div class="form-group">
-                           <label>Geslo</label>
+                           <label>Password</label>
                            <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" autocomplete="off">
                            <span class="help-block <?php echo (!empty($password_err)) ? 'text-danger' : ''; ?>"><?php echo $password_err; ?></span>
                        </div>
