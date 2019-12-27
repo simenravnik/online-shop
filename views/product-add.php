@@ -95,12 +95,12 @@
 
                       <div class="form-group">
                           <label>Name</label>
-                          <input type="text" name="title" class="form-control" value="<?= $title ?>" autofocus required>
+                          <input type="text" name="title" class="form-control" value="" autofocus required>
                       </div>
 
                       <div class="form-group">
                           <label>Price</label>
-                          <input type="number" name="price" class="form-control" value="<?= $title ?>" autofocus required>
+                          <input type="number" name="price" class="form-control" value="" autofocus required>
                       </div>
 
                       <input type="hidden" name="activated" value=0>
