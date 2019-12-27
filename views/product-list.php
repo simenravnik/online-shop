@@ -74,7 +74,7 @@ switch ($data["do"]) {
         <!-- Navigation -->
         <nav class="navbar navbar-expand-sm navbar-light fixed-top" style="background-color: #ffffff;">
           <div class="container">
-            <a class="navbar-brand" href="#">Online Shop</a>
+            <a class="navbar-brand" href="<?= BASE_URL . "products" ?>">Online Shop</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
              <span class="navbar-toggler-icon"></span>
             </button>
