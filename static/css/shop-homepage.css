@@ -11,18 +11,3 @@ body {
     color: #d9534f;
     background-color: #d9534f;
 }
-
-#page-container {
-  position: relative;
-  min-height: 108vh;
-}
-
-#content-wrap {
-  padding-bottom: 10.5rem;    /* Footer height */
-}
-
-#footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-}
