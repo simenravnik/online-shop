@@ -14,11 +14,11 @@ body {
 
 #page-container {
   position: relative;
-  min-height: 93vh;
+  min-height: 108vh;
 }
 
 #content-wrap {
-  padding-bottom: 1.5rem;    /* Footer height */
+  padding-bottom: 10.5rem;    /* Footer height */
 }
 
 #footer {
