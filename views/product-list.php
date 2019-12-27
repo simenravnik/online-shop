@@ -240,7 +240,7 @@ switch ($data["do"]) {
                                 <?php if($product["activated"] == 1) { ?>
                                     <button type="submit" class="btn btn-outline-warning add-to-cart"><i class="fas fa-cart-plus"></i> Add to cart</button>
                                 <?php } else { ?>
-                                    <p>Not available at the moment</p>
+                                    <p>Not available at the moment.</p>
                                 <?php } ?>
                             <?php } ?>
                         </form>
