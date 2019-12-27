@@ -163,164 +163,151 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     <head>
     <body>
-       <div id="page-container">
-           <div id="content-wrap">
-              <!-- Navigation -->
-              <nav class="navbar navbar-expand-sm navbar-light fixed-top" style="background-color: #ffffff;">
-                <div class="container">
-                  <a class="navbar-brand" href="<?= BASE_URL . "products" ?>">Online Shop</a>
-                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                   <span class="navbar-toggler-icon"></span>
-                  </button>
-                  <div class="collapse navbar-collapse" id="navbarResponsive">
-                   <ul class="navbar-nav ml-auto">
-                      <li class="nav-item">
-                        <a class="nav-link" href="<?= BASE_URL . "products" ?>">Home
-                          <span class="sr-only">(current)</span>
-                        </a>
-                      </li>
-                      <?php if(!isset($_SESSION["loggedin"])) { ?>
-                          <li class="nav-item">
-                            <a class="nav-link active" href="<?= BASE_URL . "registration" ?>">Register</a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link" href="<?= BASE_URL . "login" ?>">Login</a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link" href="<?= BASE_URL . "certificate" ?>">Admins/Sellers</a>
-                          </li>
-                      <?php } else {
-                          if($_SESSION["type"] == 1) { ?>
-                              <li class="nav-item">
-                                 <a class="nav-link" href="<?= BASE_URL . "products/add" ?>">Add products</a>
-                              </li>
-                              <li class="nav-item">
-                                 <a class="nav-link" href="<?= BASE_URL . "users" ?>">Customers</a>
-                              </li>
-                              <li class="nav-item">
-                                 <a class="nav-link" href="<?= BASE_URL . "orders" ?>">Orders</a>
-                              </li>
-                          <?php } else if ($_SESSION["type"] == 0) { ?>
-                              <li class="nav-item">
-                                 <a class="nav-link" href="<?= BASE_URL . "users" ?>">Sellers</a>
-                              </li>
-                           <?php } else if ($_SESSION["type"] == 2 ){ ?>
-                              <li class="nav-item">
-                                 <a class="nav-link" href="<?= BASE_URL . "orders" ?>">My orders</a>
-                              </li>
-                           <?php } ?>
-                              <li class="nav-item">
-                                 <a class="nav-link" href="<?= BASE_URL . "profile/" . $_SESSION["id"] ?>">Edit profile</a>
-                              </li>
-                              <li class="nav-item">
-                                 <a class="nav-link btn btn-logout" href="<?= BASE_URL . "logout" ?>">Logout</a>
-                              </li>
-                      <?php } ?>
-                   </ul>
-                  </div>
-                </div>
-              </nav>
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-sm navbar-light fixed-top" style="background-color: #ffffff;">
+          <div class="container">
+            <a class="navbar-brand" href="<?= BASE_URL . "products" ?>">Online Shop</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+             <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+             <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                  <a class="nav-link" href="<?= BASE_URL . "products" ?>">Home
+                    <span class="sr-only">(current)</span>
+                  </a>
+                </li>
+                <?php if(!isset($_SESSION["loggedin"])) { ?>
+                    <li class="nav-item">
+                      <a class="nav-link active" href="<?= BASE_URL . "registration" ?>">Register</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="<?= BASE_URL . "login" ?>">Login</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="<?= BASE_URL . "certificate" ?>">Admins/Sellers</a>
+                    </li>
+                <?php } else {
+                    if($_SESSION["type"] == 1) { ?>
+                        <li class="nav-item">
+                           <a class="nav-link" href="<?= BASE_URL . "products/add" ?>">Add products</a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" href="<?= BASE_URL . "users" ?>">Customers</a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" href="<?= BASE_URL . "orders" ?>">Orders</a>
+                        </li>
+                    <?php } else if ($_SESSION["type"] == 0) { ?>
+                        <li class="nav-item">
+                           <a class="nav-link" href="<?= BASE_URL . "users" ?>">Sellers</a>
+                        </li>
+                     <?php } else if ($_SESSION["type"] == 2 ){ ?>
+                        <li class="nav-item">
+                           <a class="nav-link" href="<?= BASE_URL . "orders" ?>">My orders</a>
+                        </li>
+                     <?php } ?>
+                        <li class="nav-item">
+                           <a class="nav-link" href="<?= BASE_URL . "profile/" . $_SESSION["id"] ?>">Edit profile</a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link btn btn-logout" href="<?= BASE_URL . "logout" ?>">Logout</a>
+                        </li>
+                <?php } ?>
+             </ul>
+            </div>
+          </div>
+        </nav>
 
-              <!-- Page Content -->
-              <div class="container">
+        <!-- Page Content -->
+        <div class="container">
 
-                <div class="row">
+          <div class="row">
 
-                  <div class="col-lg-3">
-                    <h1 class="my-4">Registration</h1>
-                  </div>
-                  <!-- /.col-lg-3 -->
+            <div class="col-lg-3">
+              <h1 class="my-4">Registration</h1>
+            </div>
+            <!-- /.col-lg-3 -->
 
-                  <div class="col-lg-9">
+            <div class="col-lg-9">
 
-                     <div class="wrapper">
-                         <br>
-                         <h2>Create new account</h2>
-                         <br>
-                         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                             <div class="form-group">
-                                 <label>Firstname</label>
-                                 <input type="text" name="name" class="form-control <?php echo (!empty($name_err)) ? 'is-invalid' : ''; ?>" value="<?= $name ?>">
-                                 <span class="help-block <?php echo (!empty($name_err)) ? 'text-danger' : ''; ?>"><?php echo $name_err; ?></span>
-                             </div>
+               <div class="wrapper">
+                   <br>
+                   <h2>Create new account</h2>
+                   <br>
+                   <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                       <div class="form-group">
+                           <label>Firstname</label>
+                           <input type="text" name="name" class="form-control <?php echo (!empty($name_err)) ? 'is-invalid' : ''; ?>" value="<?= $name ?>">
+                           <span class="help-block <?php echo (!empty($name_err)) ? 'text-danger' : ''; ?>"><?php echo $name_err; ?></span>
+                       </div>
 
-                             <div class="form-group">
-                                 <label>Lastname</label>
-                                 <input type="text" name="lastName" class="form-control <?php echo (!empty($lastName_err)) ? 'is-invalid' : ''; ?>" value="<?= $lastName ?>">
-                                 <span class="help-block <?php echo (!empty($lastName_err)) ? 'text-danger' : ''; ?>"><?php echo $lastName_err; ?></span>
-                             </div>
+                       <div class="form-group">
+                           <label>Lastname</label>
+                           <input type="text" name="lastName" class="form-control <?php echo (!empty($lastName_err)) ? 'is-invalid' : ''; ?>" value="<?= $lastName ?>">
+                           <span class="help-block <?php echo (!empty($lastName_err)) ? 'text-danger' : ''; ?>"><?php echo $lastName_err; ?></span>
+                       </div>
 
-                             <div class="form-group">
-                                 <label>Email</label>
-                                 <input type="text" name="email" class="form-control <?php echo (!empty($email_err)) ? 'is-invalid' : ''; ?>" value="<?= $email ?>" autocomplete="off">
-                                 <span class="help-block <?php echo (!empty($email_err)) ? 'text-danger' : ''; ?>"><?php echo $email_err; ?></span>
-                             </div>
+                       <div class="form-group">
+                           <label>Email</label>
+                           <input type="text" name="email" class="form-control <?php echo (!empty($email_err)) ? 'is-invalid' : ''; ?>" value="<?= $email ?>" autocomplete="off">
+                           <span class="help-block <?php echo (!empty($email_err)) ? 'text-danger' : ''; ?>"><?php echo $email_err; ?></span>
+                       </div>
 
-                             <div class="form-group">
-                                 <label>Password</label>
-                                 <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" value="<?= $password ?>"cautocomplete="off">
-                                 <span class="help-block <?php echo (!empty($password_err)) ? 'text-danger' : ''; ?>"><?php echo $password_err; ?></span>
-                             </div>
+                       <div class="form-group">
+                           <label>Password</label>
+                           <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" value="<?= $password ?>"cautocomplete="off">
+                           <span class="help-block <?php echo (!empty($password_err)) ? 'text-danger' : ''; ?>"><?php echo $password_err; ?></span>
+                       </div>
 
-                             <div class="row">
-                               <div class="col-md-8 mb-3">
-                                  <div class="form-group">
-                                     <label>Address</label>
-                                     <input type="text" name="address" class="form-control <?php echo (!empty($address_err)) ? 'is-invalid' : ''; ?>" value="<?= $address ?>">
-                                     <span class="help-block <?php echo (!empty($address_err)) ? 'text-danger' : ''; ?>"><?php echo $address_err; ?></span>
-                                 </div>
-                               </div>
-                               <div class="col-md-4 mb-3">
-                                  <div class="form-group">
-                                     <label>Zip</label>
-                                     <select class="form-control <?php echo (!empty($zipcode_id_err)) ? 'is-invalid' : ''; ?>" name="zipcode_id">
-                                         <option value="1" selected>1000 Ljubljana</option>
-                                         <option value="2">2000 Maribor</option>
-                                         <option value="3">3000 Celje</option>
-                                         <option value="4">4000 Kranj</option>
-                                         <option value="5">5000 Nova Gorica</option>
-                                     </select>
-                                     <span class="help-block <?php echo (!empty($zipcode_id_err)) ? 'text-danger' : ''; ?>"><?php echo $zipcode_id_err; ?></span>
-                                 </div>
-                               </div>
-                             </div>
+                       <div class="row">
+                         <div class="col-md-8 mb-3">
+                            <div class="form-group">
+                               <label>Address</label>
+                               <input type="text" name="address" class="form-control <?php echo (!empty($address_err)) ? 'is-invalid' : ''; ?>" value="<?= $address ?>">
+                               <span class="help-block <?php echo (!empty($address_err)) ? 'text-danger' : ''; ?>"><?php echo $address_err; ?></span>
+                           </div>
+                         </div>
+                         <div class="col-md-4 mb-3">
+                            <div class="form-group">
+                               <label>Zip</label>
+                               <select class="form-control <?php echo (!empty($zipcode_id_err)) ? 'is-invalid' : ''; ?>" name="zipcode_id">
+                                   <option value="1" selected>1000 Ljubljana</option>
+                                   <option value="2">2000 Maribor</option>
+                                   <option value="3">3000 Celje</option>
+                                   <option value="4">4000 Kranj</option>
+                                   <option value="5">5000 Nova Gorica</option>
+                               </select>
+                               <span class="help-block <?php echo (!empty($zipcode_id_err)) ? 'text-danger' : ''; ?>"><?php echo $zipcode_id_err; ?></span>
+                           </div>
+                         </div>
+                       </div>
 
-                             <div class="form-group">
-                                 <label>Phone number</label>
-                                 <input type="text" name="phone" class="form-control <?php echo (!empty($phone_err)) ? 'is-invalid' : ''; ?>" value="<?= $phone ?>">
-                                 <span class="help-block <?php echo (!empty($phone_err)) ? 'text-danger' : ''; ?>"><?php echo $phone_err; ?></span>
-                             </div>
-                             <div class="form-group">
-                                <label>Validation</label>
-                                <div class="g-recaptcha" data-sitekey="6LfIOYkUAAAAAJBdVnr6fiQWYguSPm92R7e1Dku-"></div>
-                             </div>
-                             <hr class="mb-4">
-                             <div class="form-group">
-                                 <input type="submit" class="btn btn-primary btn-md btn-block" value="Submit">
-                             </div>
-                         </form>
-                         <br>
-                     </div>
+                       <div class="form-group">
+                           <label>Phone number</label>
+                           <input type="text" name="phone" class="form-control <?php echo (!empty($phone_err)) ? 'is-invalid' : ''; ?>" value="<?= $phone ?>">
+                           <span class="help-block <?php echo (!empty($phone_err)) ? 'text-danger' : ''; ?>"><?php echo $phone_err; ?></span>
+                       </div>
+                       <div class="form-group">
+                          <label>Validation</label>
+                          <div class="g-recaptcha" data-sitekey="6LfIOYkUAAAAAJBdVnr6fiQWYguSPm92R7e1Dku-"></div>
+                       </div>
+                       <hr class="mb-4">
+                       <div class="form-group">
+                           <input type="submit" class="btn btn-primary btn-md btn-block" value="Submit">
+                       </div>
+                   </form>
+                   <br>
+               </div>
 
-                  </div>
-                  <!-- /.col-lg-9 -->
+            </div>
+            <!-- /.col-lg-9 -->
 
-                </div>
-                <!-- /.row -->
+          </div>
+          <!-- /.row -->
 
-              </div>
-              <!-- /.container -->
-
-           </div>
-
-           <!-- Footer -->
-           <footer id="footer" class="py-5" style="background-color: #F5F5F5;">
-              <div class="container">
-                <p class="m-0 text-center">Copyright &copy; online-shop 2020</p>
-              </div>
-              <!-- /.container -->
-           </footer>
         </div>
+        <!-- /.container -->
 
         <script src='https://www.google.com/recaptcha/api.js'></script>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

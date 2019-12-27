@@ -114,121 +114,110 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     <head>
     <body>
-        <div id="page-container">
-           <div id="content-wrap">
-              <!-- Navigation -->
-              <nav class="navbar navbar-expand-sm navbar-light fixed-top" style="background-color: #ffffff;">
-                <div class="container">
-                  <a class="navbar-brand" href="<?= BASE_URL . "products" ?>">Online Shop</a>
-                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                   <span class="navbar-toggler-icon"></span>
-                  </button>
-                  <div class="collapse navbar-collapse" id="navbarResponsive">
-                   <ul class="navbar-nav ml-auto">
-                      <li class="nav-item">
-                        <a class="nav-link" href="<?= BASE_URL . "products" ?>">Home
-                          <span class="sr-only">(current)</span>
-                        </a>
-                      </li>
-                      <?php if(!isset($_SESSION["loggedin"])) { ?>
-                          <li class="nav-item">
-                            <a class="nav-link" href="<?= BASE_URL . "registration" ?>">Register</a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link active" href="<?= BASE_URL . "login" ?>">Login</a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link" href="<?= BASE_URL . "certificate" ?>">Admins/Sellers</a>
-                          </li>
-                      <?php } else {
-                          if($_SESSION["type"] == 1) { ?>
-                              <li class="nav-item">
-                                 <a class="nav-link" href="<?= BASE_URL . "products/add" ?>">Add products</a>
-                              </li>
-                              <li class="nav-item">
-                                 <a class="nav-link" href="<?= BASE_URL . "users" ?>">Customers</a>
-                              </li>
-                              <li class="nav-item">
-                                 <a class="nav-link" href="<?= BASE_URL . "orders" ?>">Orders</a>
-                              </li>
-                          <?php } else if ($_SESSION["type"] == 0) { ?>
-                              <li class="nav-item">
-                                 <a class="nav-link" href="<?= BASE_URL . "users" ?>">Sellers</a>
-                              </li>
-                           <?php } else if ($_SESSION["type"] == 2 ){ ?>
-                              <li class="nav-item">
-                                 <a class="nav-link" href="<?= BASE_URL . "orders" ?>">My orders</a>
-                              </li>
-                           <?php } ?>
-                              <li class="nav-item">
-                                 <a class="nav-link" href="<?= BASE_URL . "profile/" . $_SESSION["id"] ?>">Edit profile</a>
-                              </li>
-                              <li class="nav-item">
-                                 <a class="nav-link btn btn-logout" href="<?= BASE_URL . "logout" ?>">Logout</a>
-                              </li>
-                      <?php } ?>
-                   </ul>
-                  </div>
-                </div>
-              </nav>
-
-              <!-- Page Content -->
-              <div class="container">
-
-                <div class="row">
-
-                  <div class="col-lg-3">
-                    <h1 class="my-4">Login</h1>
-                  </div>
-                  <!-- /.col-lg-3 -->
-
-                  <div class="col-lg-9">
-
-                     <div class="wrapper">
-                         <br>
-                         <h2>Login with existing account</h2>
-                         <br>
-
-                         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-
-                             <div class="form-group">
-                                 <label>Email</label>
-                                 <input type="text" name="email" class="form-control <?php echo (!empty($email_err)) ? 'is-invalid' : ''; ?>" value="<?= $email ?>" autocomplete="off">
-                                 <span class="help-block <?php echo (!empty($email_err)) ? 'text-danger' : ''; ?>"><?php echo $email_err; ?></span>
-                             </div>
-
-                             <div class="form-group">
-                                 <label>Geslo</label>
-                                 <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" autocomplete="off">
-                                 <span class="help-block <?php echo (!empty($password_err)) ? 'text-danger' : ''; ?>"><?php echo $password_err; ?></span>
-                             </div>
-
-                             <hr class="mb-4">
-                             <div class="form-group">
-                                 <input type="submit" class="btn btn-primary btn-md btn-block" value="Submit">
-                             </div>
-                         </form>
-                         <br>
-                     </div>
-
-                  </div>
-                  <!-- /.col-lg-9 -->
-
-                </div>
-                <!-- /.row -->
-
-              </div>
-              <!-- /.container -->
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-sm navbar-light fixed-top" style="background-color: #ffffff;">
+          <div class="container">
+            <a class="navbar-brand" href="<?= BASE_URL . "products" ?>">Online Shop</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+             <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+             <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                  <a class="nav-link" href="<?= BASE_URL . "products" ?>">Home
+                    <span class="sr-only">(current)</span>
+                  </a>
+                </li>
+                <?php if(!isset($_SESSION["loggedin"])) { ?>
+                    <li class="nav-item">
+                      <a class="nav-link" href="<?= BASE_URL . "registration" ?>">Register</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link active" href="<?= BASE_URL . "login" ?>">Login</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="<?= BASE_URL . "certificate" ?>">Admins/Sellers</a>
+                    </li>
+                <?php } else {
+                    if($_SESSION["type"] == 1) { ?>
+                        <li class="nav-item">
+                           <a class="nav-link" href="<?= BASE_URL . "products/add" ?>">Add products</a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" href="<?= BASE_URL . "users" ?>">Customers</a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" href="<?= BASE_URL . "orders" ?>">Orders</a>
+                        </li>
+                    <?php } else if ($_SESSION["type"] == 0) { ?>
+                        <li class="nav-item">
+                           <a class="nav-link" href="<?= BASE_URL . "users" ?>">Sellers</a>
+                        </li>
+                     <?php } else if ($_SESSION["type"] == 2 ){ ?>
+                        <li class="nav-item">
+                           <a class="nav-link" href="<?= BASE_URL . "orders" ?>">My orders</a>
+                        </li>
+                     <?php } ?>
+                        <li class="nav-item">
+                           <a class="nav-link" href="<?= BASE_URL . "profile/" . $_SESSION["id"] ?>">Edit profile</a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link btn btn-logout" href="<?= BASE_URL . "logout" ?>">Logout</a>
+                        </li>
+                <?php } ?>
+             </ul>
             </div>
+          </div>
+        </nav>
 
-            <!-- Footer -->
-            <footer id="footer" class="py-5" style="background-color: #F5F5F5;">
-               <div class="container">
-                  <p class="m-0 text-center">Copyright &copy; online-shop 2020</p>
+        <!-- Page Content -->
+        <div class="container">
+
+          <div class="row">
+
+            <div class="col-lg-3">
+              <h1 class="my-4">Login</h1>
+            </div>
+            <!-- /.col-lg-3 -->
+
+            <div class="col-lg-9">
+
+               <div class="wrapper">
+                   <br>
+                   <h2>Login with existing account</h2>
+                   <br>
+
+                   <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+
+                       <div class="form-group">
+                           <label>Email</label>
+                           <input type="text" name="email" class="form-control <?php echo (!empty($email_err)) ? 'is-invalid' : ''; ?>" value="<?= $email ?>" autocomplete="off">
+                           <span class="help-block <?php echo (!empty($email_err)) ? 'text-danger' : ''; ?>"><?php echo $email_err; ?></span>
+                       </div>
+
+                       <div class="form-group">
+                           <label>Geslo</label>
+                           <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" autocomplete="off">
+                           <span class="help-block <?php echo (!empty($password_err)) ? 'text-danger' : ''; ?>"><?php echo $password_err; ?></span>
+                       </div>
+
+                       <hr class="mb-4">
+                       <div class="form-group">
+                           <input type="submit" class="btn btn-primary btn-md btn-block" value="Submit">
+                       </div>
+                   </form>
+                   <br>
                </div>
-               <!-- /.container -->
-            </footer>
+
+            </div>
+            <!-- /.col-lg-9 -->
+
+          </div>
+          <!-- /.row -->
+
         </div>
+        <!-- /.container -->
+
         <script src='https://www.google.com/recaptcha/api.js'></script>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
