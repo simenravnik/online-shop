@@ -23,3 +23,8 @@ body {
   padding-top: 13px;
   padding-left: 6px;
 }
+
+.item-img {
+  height: 150px;
+  object-fit:cover;
+}
