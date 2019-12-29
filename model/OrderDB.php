@@ -34,7 +34,7 @@ class OrderDB extends AbstractDB {
     public static function getAll() {
         return parent::query("SELECT id, id_user, id_seller, status"
                         . " FROM shop_order"
-                        . " shop_order BY id ASC");
+                        . " ORDER BY id ASC");
     }
 
     public static function getAllwithURI(array $prefix) {
