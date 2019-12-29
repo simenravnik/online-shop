@@ -160,9 +160,9 @@
                                   <input type="text" name="phone" class="form-control" >
                               </div>
                           <?php } else { ?>
-                              <input type="hidden" name="address" />
-                              <input type="hidden" name="zipcode_id" />
-                              <input type="hidden" name="phone" />
+                              <input type="hidden" name="address" value=""/>
+                              <input type="hidden" name="zipcode_id" value="1"/>
+                              <input type="hidden" name="phone" value=""/>
 
                           <?php } ?>
 
