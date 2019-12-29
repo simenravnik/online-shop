@@ -14,6 +14,9 @@
     # EDITING USERS
     require_once("controllers/UsersController.php");
 
+    # ORDERS
+    require_once("controller/OrdersController.php");
+
     define("BASE_URL", rtrim($_SERVER["SCRIPT_NAME"], "index.php"));
 
     define("IMAGES_URL", rtrim($_SERVER["SCRIPT_NAME"], "index.php") . "static/images/");
@@ -98,6 +101,29 @@
             if ($method == "POST") {
                 UsersController::delete($id);
             }
+        },
+        # ORDERS
+        "/^orders\/edit\/(\d+)$/" => function ($method, $id) {
+            if ($method == "POST") {
+                OrdersController::edit($id);
+            } else {
+                OrdersController::editForm($id);
+            }
+        },
+        "/^orders\/delete\/(\d+)$/" => function ($method, $id) {
+            OrdersController::delete($id);
+        },
+        "/^orders\/submit$/" => function ($method) {
+            OrdersController::orderSubmit();
+        },
+        "/^orders\/confirmation$/" => function ($method) {
+            OrdersController::orderConfirmation();
+        },
+        "/^orders$/" => function ($method) {
+            OrdersController::index();
+        },
+        "/^orders\/(\d+)$/" => function ($method, $id) {
+            OrdersController::get($id);
         },
         # REST API
         "/^api\/products\/(\d+)$/" => function ($method, $id) {
