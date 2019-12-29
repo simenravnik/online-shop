@@ -6,20 +6,20 @@
     require_once("ViewHelper.php");
 
     class OrdersController {
-      
+
         public static function orderSubmit() {
-            echo ViewHelper::render("view/order-submit.php");
+            echo ViewHelper::render("views/order-submit.php");
         }
         public static function orderConfirmation() {
-            echo ViewHelper::render("view/order-confirmation.php");
+            echo ViewHelper::render("views/order-confirmation.php");
         }
 
         public static function get($id) {
-            echo ViewHelper::render("view/order-detail.php", OrderDB::get(["id" => $id]));
+            echo ViewHelper::render("views/order-detail.php", OrderDB::get(["id" => $id]));
         }
 
         public static function index() {
-            echo ViewHelper::render("view/order-list.php", [
+            echo ViewHelper::render("views/order-list.php", [
                 "orders" => OrderDB::getAll()
             ]);
         }
@@ -44,7 +44,7 @@
                 throw new InvalidArgumentException("Cannot show form.");
             }
 
-            echo ViewHelper::render("view/order-edit.php", $values);
+            echo ViewHelper::render("views/order-edit.php", $values);
         }
 
         public static function edit($id) {
