@@ -135,7 +135,9 @@
                                  <tr>
                                    <th scope="row"><?= $user["number"] ?></th>
                                    <td>
-                                       <?= $user["name"] ?> <?= $user["lastName"]?>
+                                      <a href="<?= BASE_URL . "users/" . $user["id"] ?>">
+                                        <?= $user["name"] ?> <?= $user["lastName"]?>
+                                      </a>
                                    </td>
                                    <td>
                                      <a href="<?= BASE_URL . "users/edit/" . $user["id"] ?>" class="btn btn-sm btn-primary my-1 my-sm-0">
