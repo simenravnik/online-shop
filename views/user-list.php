@@ -95,7 +95,6 @@
             <div class="col-lg-9">
                <div class="wrapper">
                   <br>
-                  <h2></h2>
                      <?php if ($_SESSION["type"] == 1) { ?>
                         <h2>Add new customer</h2>
                     <?php } else if ($_SESSION["type"] == 0) { ?>
@@ -108,7 +107,6 @@
 
                    <br>
                    <br>
-                   <h2></h2>
                    <?php if ($_SESSION["type"] == 1) { ?>
                       <h2>List of customers</h2>
                   <?php } else if ($_SESSION["type"] == 0) { ?>
