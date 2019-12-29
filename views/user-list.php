@@ -54,7 +54,7 @@
                         </li>
                     <?php } else if ($_SESSION["type"] == 0) { ?>
                         <li class="nav-item">
-                           <a class="nav-link" href="<?= BASE_URL . "users" ?>">Sellers</a>
+                           <a class="nav-link active" href="<?= BASE_URL . "users" ?>">Sellers</a>
                         </li>
                      <?php } else if ($_SESSION["type"] == 2 ){ ?>
                         <li class="nav-item">
