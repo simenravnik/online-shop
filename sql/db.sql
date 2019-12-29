@@ -75,7 +75,7 @@ CREATE TABLE `user` (
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 INSERT INTO `user` VALUES
-(1,'Simen', 'Ravnik', 'simen@ep.si', '$2y$10$ur5zCCJqGEKrHvECUA1dPOUHWQxjU42S.g7QY9uYCKrPlxPvxiWaG', 0, '', '', '', true),
+(1,'Simen', 'Ravnik', 'simen@ep.si', '$2y$10$9dsxWqgbfIHnfZRAZ0urBOha/julx.gYNCxvlTFKSwPSvlRA/zy4.', 0, '', '', '', true),
 (2, 'Jure', 'Srovin', 'jure@ep.si', '$2y$10$4pfixLIqiS4Re6uP1KaZUOcQdZ452DVfSElOjdfYaqihJbQBUaFDq', 1, '', '', '', true),
 (3, 'Jure', 'Vito', 'vito@ep.si', '$2y$10$.6ZJL/PP3GyIYPDMQdPT9O4DRYCYq.4n0Gfck1QCxw2gKZ/qwaiu6', 2, 'Večna pot 113', 5, '040123456', true);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
