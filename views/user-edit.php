@@ -96,7 +96,7 @@
                       <?php if ($_SESSION["type"] == 1) { ?>
                          <h2>Edit customer: <b><i><?= $name ?> <?= $lastName ?></i></b></h2>
                      <?php } else if ($_SESSION["type"] == 0) { ?>
-                         <h2>Edit seller: <b><?= $name ?> <?= $lastName ?></b></h2>
+                         <h2>Edit seller: <b><i><?= $name ?> <?= $lastName ?></i></b></h2>
                      <?php } ?>
                       <br>
 
@@ -126,9 +126,9 @@
                              <label>User type</label>
                              <select class="form-control" name="type">
                                  <?php if($_SESSION["type"] == 0) { ?>
-                                     <option value="1" choose selected>Prodajalec</option>
+                                     <option value="1" choose selected>Seller</option>
                                  <?php } else if ($_SESSION["type"] == 1) { ?>
-                                     <option value="2" choose selected>Stranka</option>
+                                     <option value="2" choose selected>Customer</option>
                                  <?php } ?>
                              </select>
                           </div>
