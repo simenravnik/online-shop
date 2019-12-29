@@ -113,7 +113,7 @@
                       </div>
 
                       <div class="custom-control custom-checkbox checkbox-lg">
-                         <input type="checkbox" name="activated" class="custom-control-input" id="checkbox-2">
+                         <input type="checkbox" name="activated" class="custom-control-input" id="checkbox-2" <?php if(isset($activated) && $activated == 1){print " checked=\"checked\"";} ?>>
                          <label class="custom-control-label" for="checkbox-2">Available</label>
                       </div>
 
