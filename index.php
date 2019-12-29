@@ -16,6 +16,10 @@
 
     # ORDERS
     require_once("controllers/OrdersController.php");
+    require_once("controllers/OrderProductsController.php");
+
+    # POST OFFICE
+    require_once("controllers/PostController.php");
 
     define("BASE_URL", rtrim($_SERVER["SCRIPT_NAME"], "index.php"));
 
