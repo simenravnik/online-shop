@@ -26,7 +26,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
              <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
+                <li class="nav-item">
                   <a class="nav-link" href="<?= BASE_URL . "products" ?>">Home
                     <span class="sr-only">(current)</span>
                   </a>
@@ -47,7 +47,7 @@
                            <a class="nav-link" href="<?= BASE_URL . "products/add" ?>">Add products</a>
                         </li>
                         <li class="nav-item">
-                           <a class="nav-link" href="<?= BASE_URL . "users" ?>">Customers</a>
+                           <a class="nav-link active" href="<?= BASE_URL . "users" ?>">Customers</a>
                         </li>
                         <li class="nav-item">
                            <a class="nav-link" href="<?= BASE_URL . "orders" ?>">Orders</a>
