@@ -80,11 +80,13 @@
 
             <div class="col-lg-3">
 
-              <?php if ($_SESSION["type"] == 1) { ?>
-                  <h1 class="my-4">Customers</h1>
-              <?php } else if ($_SESSION["type"] == 0) { ?>
-                  <h1 class="my-4">Sellers</h1>
-              <?php } ?>
+              <a href="<?= BASE_URL . "users/" ?>" style="color: black;">
+                 <?php if ($_SESSION["type"] == 1) { ?>
+                     <h1 class="my-4">Customers</h1>
+                 <?php } else if ($_SESSION["type"] == 0) { ?>
+                     <h1 class="my-4">Sellers</h1>
+                 <?php } ?>
+              </a>
 
 
             </div>
