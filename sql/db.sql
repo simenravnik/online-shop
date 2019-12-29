@@ -83,31 +83,31 @@ UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 
-DROP TABLE IF EXISTS `order`;
+DROP TABLE IF EXISTS `shop_order`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `order` (
+CREATE TABLE `shop_order` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_user` int(11) NOT NULL,
   `id_seller` int(11) NOT NULL,
   `status` smallint NOT NULL,
   PRIMARY KEY (`id`),
-  CONSTRAINT `FK_order_user` FOREIGN KEY(`id_user`) REFERENCES `user`(`id`),
-  CONSTRAINT `FK_order_seller` FOREIGN KEY(`id_seller`) REFERENCES `user`(`id`)
+  CONSTRAINT `FK_shop_order_user` FOREIGN KEY(`id_user`) REFERENCES `user`(`id`),
+  CONSTRAINT `FK_shop_order_seller` FOREIGN KEY(`id_seller`) REFERENCES `user`(`id`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_slovenian_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `order`
+-- Dumping data for table `shop_order`
 --
 
-LOCK TABLES `order` WRITE;
-/*!40000 ALTER TABLE `order` DISABLE KEYS */;
-INSERT INTO `order` VALUES
+LOCK TABLES `shop_order` WRITE;
+/*!40000 ALTER TABLE `shop_order` DISABLE KEYS */;
+INSERT INTO `shop_order` VALUES
 (1, 3, 2, 0),
 (2, 3, 2, 1),
 (3, 3, 2, 2);
-/*!40000 ALTER TABLE `order` ENABLE KEYS */;
+/*!40000 ALTER TABLE `shop_order` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
