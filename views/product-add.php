@@ -80,7 +80,9 @@
           <div class="row">
 
             <div class="col-lg-3">
-              <h1 class="my-4">Products</h1>
+               <a href="<?= BASE_URL . "products/" ?>" style="color: black;">
+                 <h1 class="my-4">Products</h1>
+              </a>
             </div>
             <!-- /.col-lg-3 -->
 
