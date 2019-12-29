@@ -15,7 +15,7 @@
     require_once("controllers/UsersController.php");
 
     # ORDERS
-    require_once("controller/OrdersController.php");
+    require_once("controllers/OrdersController.php");
 
     define("BASE_URL", rtrim($_SERVER["SCRIPT_NAME"], "index.php"));
 
