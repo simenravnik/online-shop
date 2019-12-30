@@ -45,12 +45,17 @@
         }
 
         public static function edit($id) {
-            $data = json_decode(file_get_contents("php://input"), true);
+     
+            // spremenljivka $_PUT ne obstaja, zato jo moremo narediti sami
+            $_PUT = [];
+            parse_str(file_get_contents("php://input"), $_PUT);
+            $data = filter_var_array($_PUT, UsersControllerREST::getRules());
+            #$data = json_decode(file_get_contents("php://input"), true);
 
             if (ProductsController::checkValues($data)) {
                 $data["id"] = $id;
                 UserDB::update($data);
-                echo ViewHelper::renderJSON("", 200);
+                echo ViewHelper::renderJSON("", 201);
             } else {
                 echo ViewHelper::renderJSON("Missing data.", 400);
             }
