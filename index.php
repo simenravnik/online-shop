@@ -25,6 +25,9 @@
     # POST OFFICE
     require_once("app_server/controllers/PostController.php");
 
+    # RATING
+    require_once("app_server/controllers/ProductsRateController.php")
+
     define("BASE_URL", rtrim($_SERVER["SCRIPT_NAME"], "index.php"));
 
     define("IMAGES_URL", rtrim($_SERVER["SCRIPT_NAME"], "index.php") . "static/images/");
