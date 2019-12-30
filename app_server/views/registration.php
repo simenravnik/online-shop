@@ -1,7 +1,7 @@
 
 <?php
 
-require_once("model/DB.php");
+require_once("app_server/model/DB.php");
 
 $name = $lastName = $email = $password = $address = $zipcode_id = $phone = "";
 $name_err = $lastName_err = $email_err = $password_err = $address_err = $zipcode_id_err = $phone_err = "";
