@@ -49,6 +49,14 @@ switch ($data["do"]) {
     default:
         break;
 }
+
+$search = "";
+   // Processing form data when submitted
+   if($_SERVER["REQUEST_METHOD"] == "POST") {
+      if (!empty($_POST["search"])) {
+         $search = $_POST["search"];
+      }
+   }
 ?>
 
 
@@ -137,6 +145,15 @@ switch ($data["do"]) {
               <a href="<?= BASE_URL . "products/" ?>" style="color: black;">
                  <h1 class="my-4">Products</h1>
               </a>
+              <form class="mb-3" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                <div class="input-group">
+                  <input type="text" name="search" class="form-control" placeholder="Search">
+                  <div class="input-group-append">
+                    <button type="submit" class="btn btn-sm btn-primary">Search</button>
+                  </div>
+                </div>
+              </form>
+              <br>
                  <?php if(isset($_SESSION["loggedin"]) && $_SESSION["type"] == 2) { ?>
                     <div class="cart">
                         <h3>Cart</h3>
@@ -240,48 +257,50 @@ switch ($data["do"]) {
               </div>
 
               <div class="row">
-                <?php foreach ($products as $product): ?>
-                   <div class="col-lg-4 col-md-6 mb-4">
-                     <div class="card h-100">
-                       <a href="<?= BASE_URL . "products/" . $product["id"] ?>">
-                          <img class="item-img card-img-top" src="https://hips.hearstapps.com/delish/assets/18/08/1519321899-hard-boiled-eggs-horizontal.jpg" alt="">
-                       </a>
-                       <div class="card-body">
-                         <h4 class="card-title">
-                           <a href="<?= BASE_URL . "products/" . $product["id"] ?>">
-                              <?=
-                              (strlen($product["title"]) < 15) ?
-                                      $product["title"] :
-                                      substr($product["title"], 0, 15) . " ..."
-                              ?>
-                           </a>
-                         </h4>
-                         <h5><?= number_format($product["price"], 2) ?> €</h5>
-                         <p class="card-text">
-                            <?=
-                            (strlen($product["description"]) < 45) ?
-                                    $product["description"] :
-                                    substr($product["description"], 0, 45) . " ..."
-                            ?>
-                         </p>
-                         <form action="<?= BASE_URL . "products" ?>" method="post">
-                            <input type="hidden" name="do" value="add_into_cart" />
-                            <input type="hidden" name="id" value="<?= $product["id"] ?>" />
-                            <?php if(isset($_SESSION["loggedin"]) && $_SESSION["type"] == 2) { ?>
-                                <?php if($product["activated"] == 1) { ?>
-                                    <button type="submit" class="btn btn-sm btn-outline-warning add-to-cart"><i class="fas fa-cart-plus"></i> Add to cart</button>
-                                <?php } else { ?>
-                                    <p>Not available at the moment.</p>
-                                <?php } ?>
-                            <?php } ?>
-                        </form>
-                       </div>
-                       <div class="card-footer">
-                         <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                       </div>
-                     </div>
-                   </div>
-                   <?php endforeach; ?>
+                <?php foreach ($products as $product):
+                   $sim = similar_text($product["title"], $search, $perc);
+                   if (empty($search) || $perc > 50) { ?>
+                      <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100">
+                          <a href="<?= BASE_URL . "products/" . $product["id"] ?>">
+                             <img class="item-img card-img-top" src="https://hips.hearstapps.com/delish/assets/18/08/1519321899-hard-boiled-eggs-horizontal.jpg" alt="">
+                          </a>
+                          <div class="card-body">
+                            <h4 class="card-title">
+                              <a href="<?= BASE_URL . "products/" . $product["id"] ?>">
+                                 <?=
+                                 (strlen($product["title"]) < 15) ?
+                                         $product["title"] :
+                                         substr($product["title"], 0, 15) . " ..."
+                                 ?>
+                              </a>
+                            </h4>
+                            <h5><?= number_format($product["price"], 2) ?> €</h5>
+                            <p class="card-text">
+                               <?=
+                               (strlen($product["description"]) < 45) ?
+                                       $product["description"] :
+                                       substr($product["description"], 0, 45) . " ..."
+                               ?>
+                            </p>
+                            <form action="<?= BASE_URL . "products" ?>" method="post">
+                               <input type="hidden" name="do" value="add_into_cart" />
+                               <input type="hidden" name="id" value="<?= $product["id"] ?>" />
+                               <?php if(isset($_SESSION["loggedin"]) && $_SESSION["type"] == 2) { ?>
+                                   <?php if($product["activated"] == 1) { ?>
+                                       <button type="submit" class="btn btn-sm btn-outline-warning add-to-cart"><i class="fas fa-cart-plus"></i> Add to cart</button>
+                                   <?php } else { ?>
+                                       <p>Not available at the moment.</p>
+                                   <?php } ?>
+                               <?php } ?>
+                           </form>
+                          </div>
+                          <div class="card-footer">
+                            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                          </div>
+                        </div>
+                      </div>
+                   <?php } endforeach; ?>
               </div>
               <!-- /.row -->
 
