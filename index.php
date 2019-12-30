@@ -14,6 +14,7 @@
 
     # EDITING USERS
     require_once("controllers/UsersController.php");
+    require_once("controllers/UsersControllerREST.php");
 
     # ORDERS
     require_once("controllers/OrdersController.php");
@@ -153,7 +154,31 @@
                     break;
             }
         },
-                
+        # USERS REST API
+        "/^api\/users\/(\d+)$/" => function ($method, $id) {
+            switch ($method) {
+               case "PUT":
+                   UsersControllerREST::edit($id);
+                   break;
+               case "DELETE":
+                   UsersControllerREST::delete($id);
+                   break;
+               default: # GET
+                   UsersControllerREST::getUserDetails($id);
+                   break;
+            }
+        },
+        "/^api\/users$/" => function ($method) {
+            switch ($method) {
+               case "POST":
+                   UsersControllerREST::add();
+                   break;
+               default: # GET
+                   UsersControllerREST::index();
+                   break;
+            }
+        },
+
         # ANDROID REST API
         "/^api\/login$/" => function ($method) {
             switch ($method) {
