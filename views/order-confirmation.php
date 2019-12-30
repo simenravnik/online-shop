@@ -83,7 +83,9 @@
                <div class="col-lg-3">
 
                  <?php if ($_SESSION["type"] != 0) { ?>
-                     <h1 class="my-4">Orders</h1>
+                     <a href="<?= BASE_URL . "orders/" ?>" style="color: black;">
+                        <h1 class="my-4">Orders</h1>
+                     </a>
                  <?php } ?>
 
 
