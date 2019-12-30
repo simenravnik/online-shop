@@ -35,18 +35,6 @@
             }
         }
 
-        public static function editForm($params) {
-            if (is_array($params)) {
-                $values = $params;
-            } else if (is_numeric($params)) {
-                $values = OrderDB::get(["id" => $params]);
-            } else {
-                throw new InvalidArgumentException("Cannot show form.");
-            }
-
-            echo ViewHelper::render("views/order-edit.php", $values);
-        }
-
         public static function edit($id) {
             $data = filter_input_array(INPUT_POST, self::getRules());
 
@@ -55,7 +43,7 @@
                 OrderDB::update($data);
                 ViewHelper::redirect(BASE_URL . "orders/" . $data["id"]);
             } else {
-                self::editForm($data);
+                self::index();
             }
         }
 

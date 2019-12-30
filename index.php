@@ -46,8 +46,6 @@
         "/^products\/edit\/(\d+)$/" => function ($method, $id) {
             if ($method == "POST") {
                 ProductsController::edit($id);
-            } else {
-                ProductsController::editForm($id);
             }
         },
         "/^products\/delete\/(\d+)$/" => function ($method, $id) {
