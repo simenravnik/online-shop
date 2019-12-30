@@ -180,3 +180,31 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 -- Dump completed on 2014-12-12 16:45:04
+
+DROP TABLE IF EXISTS `rate`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `rate` (
+  `id_product` int(11) NOT NULL,
+  `num_ratings` int(11) NOT NULL,
+  `rating` float NOT NULL,
+  PRIMARY KEY (`id_product`),
+  CONSTRAINT `FK_rate_product` FOREIGN KEY(`id_product`) REFERENCES `product`(`id`)
+      ON DELETE CASCADE
+      ON UPDATE NO ACTION
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_slovenian_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `rate`
+--
+
+LOCK TABLES `rate` WRITE;
+/*!40000 ALTER TABLE `rate` DISABLE KEYS */;
+INSERT INTO `rate` VALUES
+(1, 5, 5),
+(2, 5, 3),
+(3, 5, 4);
+/*!40000 ALTER TABLE `rate` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
