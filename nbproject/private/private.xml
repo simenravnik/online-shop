@@ -8,32 +8,36 @@
             <file>file:/home/ep/NetBeansProjects/online-shop/ViewHelper.php</file>
             <file>file:/home/ep/NetBeansProjects/online-shop/recaptchalib.php</file>
 
+            <!-- api -->
+            <file>file:/home/ep/NetBeansProjects/online-shop/app_api/ProductsControllerREST.php</file>
+            <file>file:/home/ep/NetBeansProjects/online-shop/app_api/UsersControllerREST.php</file>
+            <file>file:/home/ep/NetBeansProjects/online-shop/app_api/AndroidREST.php</file>
+
             <!-- controllers -->
-            <file>file:/home/ep/NetBeansProjects/online-shop/controller/ProductsController.php</file>
-            <file>file:/home/ep/NetBeansProjects/online-shop/controller/ProductsControllerREST.php</file>
-            <file>file:/home/ep/NetBeansProjects/online-shop/controller/LoginController.php</file>
-            <file>file:/home/ep/NetBeansProjects/online-shop/controller/LogoutController.php</file>
-            <file>file:/home/ep/NetBeansProjects/online-shop/controller/RegistrationController.php</file>
-            <file>file:/home/ep/NetBeansProjects/online-shop/controller/UsersController.php</file>
+            <file>file:/home/ep/NetBeansProjects/online-shop/app_server/controllers/ProductsController.php</file>
+            <file>file:/home/ep/NetBeansProjects/online-shop/app_server/controllers/LoginController.php</file>
+            <file>file:/home/ep/NetBeansProjects/online-shop/app_server/controllers/LogoutController.php</file>
+            <file>file:/home/ep/NetBeansProjects/online-shop/app_server/controllers/RegistrationController.php</file>
+            <file>file:/home/ep/NetBeansProjects/online-shop/app_server/controllers/UsersController.php</file>
 
             <!-- model -->
-            <file>file:/home/ep/NetBeansProjects/online-shop/model/AbstractDB.php</file>
-            <file>file:/home/ep/NetBeansProjects/online-shop/model/DB.php</file>
-            <file>file:/home/ep/NetBeansProjects/online-shop/model/ProductDB.php</file>
-            <file>file:/home/ep/NetBeansProjects/online-shop/model/UserDB.php</file>
+            <file>file:/home/ep/NetBeansProjects/online-shop/app_server/model/AbstractDB.php</file>
+            <file>file:/home/ep/NetBeansProjects/online-shop/app_server/model/DB.php</file>
+            <file>file:/home/ep/NetBeansProjects/online-shop/app_server/model/ProductDB.php</file>
+            <file>file:/home/ep/NetBeansProjects/online-shop/app_server/model/UserDB.php</file>
 
             <!-- views -->
-            <file>file:/home/ep/NetBeansProjects/online-shop/view/product-list.php</file>
-            <file>file:/home/ep/NetBeansProjects/online-shop/view/product-add.php</file>
-            <file>file:/home/ep/NetBeansProjects/online-shop/view/product-detail.php</file>
-            <file>file:/home/ep/NetBeansProjects/online-shop/view/product-edit.php</file>
-            <file>file:/home/ep/NetBeansProjects/online-shop/view/login.php</file>
-            <file>file:/home/ep/NetBeansProjects/online-shop/view/logout.php</file>
-            <file>file:/home/ep/NetBeansProjects/online-shop/view/registration.php</file>
-            <file>file:/home/ep/NetBeansProjects/online-shop/view/user-add.php</file>
-            <file>file:/home/ep/NetBeansProjects/online-shop/view/user-detail.php</file>
-            <file>file:/home/ep/NetBeansProjects/online-shop/view/user-edit.php</file>
-            <file>file:/home/ep/NetBeansProjects/online-shop/view/user-list.php</file>
+            <file>file:/home/ep/NetBeansProjects/online-shop/app_server/view/product-list.php</file>
+            <file>file:/home/ep/NetBeansProjects/online-shop/app_server/view/product-add.php</file>
+            <file>file:/home/ep/NetBeansProjects/online-shop/app_server/view/product-detail.php</file>
+            <file>file:/home/ep/NetBeansProjects/online-shop/app_server/view/product-edit.php</file>
+            <file>file:/home/ep/NetBeansProjects/online-shop/app_server/view/login.php</file>
+            <file>file:/home/ep/NetBeansProjects/online-shop/app_server/view/logout.php</file>
+            <file>file:/home/ep/NetBeansProjects/online-shop/app_server/view/registration.php</file>
+            <file>file:/home/ep/NetBeansProjects/online-shop/app_server/view/user-add.php</file>
+            <file>file:/home/ep/NetBeansProjects/online-shop/app_server/view/user-detail.php</file>
+            <file>file:/home/ep/NetBeansProjects/online-shop/app_server/view/user-edit.php</file>
+            <file>file:/home/ep/NetBeansProjects/online-shop/app_server/view/user-list.php</file>
 
             <!-- database -->
             <file>file:/home/ep/NetBeansProjects/online-shop/sql/db.sql</file>
