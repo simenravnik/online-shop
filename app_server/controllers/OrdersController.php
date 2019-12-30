@@ -9,18 +9,18 @@
     class OrdersController {
 
         public static function orderSubmit() {
-            echo ViewHelper::render("views/order-submit.php");
+            echo ViewHelper::render("app_server/views/order-submit.php");
         }
         public static function orderConfirmation() {
-            echo ViewHelper::render("views/order-confirmation.php");
+            echo ViewHelper::render("app_server/views/order-confirmation.php");
         }
 
         public static function get($id) {
-            echo ViewHelper::render("views/order-detail.php", OrderDB::get(["id" => $id]));
+            echo ViewHelper::render("app_server/views/order-detail.php", OrderDB::get(["id" => $id]));
         }
 
         public static function index() {
-            echo ViewHelper::render("views/order-list.php", [
+            echo ViewHelper::render("app_server/views/order-list.php", [
                 "orders" => OrderDB::getAll()
             ]);
         }

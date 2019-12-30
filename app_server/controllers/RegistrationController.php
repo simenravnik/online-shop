@@ -8,7 +8,7 @@
     class RegistrationController {
 
         public static function indexReg() {
-            echo ViewHelper::render("views/registration.php");
+            echo ViewHelper::render("app_server/views/registration.php");
         }
 
         public static function login() {

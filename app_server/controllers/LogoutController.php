@@ -8,6 +8,6 @@
     class LogoutController {
 
         public static function logout() {
-            ViewHelper::render("views/logout.php");
+            ViewHelper::render("app_server/views/logout.php");
         }
 }

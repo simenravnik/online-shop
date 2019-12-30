@@ -13,11 +13,11 @@
         }
 
         public static function get($id) {
-            echo ViewHelper::render("views/user-detail.php", UserDB::get(["id" => $id]));
+            echo ViewHelper::render("app_server/views/user-detail.php", UserDB::get(["id" => $id]));
         }
 
         public static function index() {
-            echo ViewHelper::render("views/user-list.php", [
+            echo ViewHelper::render("app_server/views/user-list.php", [
                 "users" => UserDB::getAll()
             ]);
         }
@@ -33,7 +33,7 @@
             "zipcode_id" => 1,
             "activated" => 0
         ]) {
-            echo ViewHelper::render("views/user-add.php", $values);
+            echo ViewHelper::render("app_server/views/user-add.php", $values);
         }
 
         public static function add() {
@@ -65,7 +65,7 @@
                 throw new InvalidArgumentException("Cannot show form.");
             }
 
-            echo ViewHelper::render("views/user-edit.php", $values);
+            echo ViewHelper::render("app_server/views/user-edit.php", $values);
         }
 
         public static function edit($id) {
@@ -101,7 +101,7 @@
                 throw new InvalidArgumentException("Cannot show form.");
             }
 
-            echo ViewHelper::render("views/profile-edit.php", $values);
+            echo ViewHelper::render("app_server/views/profile-edit.php", $values);
         }
 
         public static function editProfile($id) {

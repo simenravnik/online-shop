@@ -8,11 +8,11 @@
 
         class LoginController {
             public static function certificateAuth() {
-                echo ViewHelper::render("views/certificate.php");
+                echo ViewHelper::render("app_server/views/certificate.php");
             }
 
             public static function index() {
-                echo ViewHelper::render("views/login.php");
+                echo ViewHelper::render("app_server/views/login.php");
             }
 
             public static function logged_in() {

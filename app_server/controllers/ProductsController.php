@@ -12,11 +12,11 @@
         }
 
         public static function get($id) {
-            echo ViewHelper::render("views/product-detail.php", ProductDB::get(["id" => $id]));
+            echo ViewHelper::render("app_server/views/product-detail.php", ProductDB::get(["id" => $id]));
         }
 
         public static function index() {
-            echo ViewHelper::render("views/product-list.php", [
+            echo ViewHelper::render("app_server/views/product-list.php", [
                 "products" => ProductDB::getAll()
             ]);
         }
@@ -27,7 +27,7 @@
             "activated" => 0,
             "description" => ""
         ]) {
-            echo ViewHelper::render("views/product-add.php", $values);
+            echo ViewHelper::render("app_server/views/product-add.php", $values);
         }
 
         public static function add() {
@@ -54,7 +54,7 @@
                 throw new InvalidArgumentException("Cannot show form.");
             }
 
-            echo ViewHelper::render("views/product-edit.php", $values);
+            echo ViewHelper::render("app_server/views/product-edit.php", $values);
         }
 
         public static function edit($id) {
