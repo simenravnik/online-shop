@@ -11,7 +11,7 @@ $validationRules = ['do' => [
         'filter' => FILTER_VALIDATE_INT,
         'options' => ['min_range' => 0]
     ],
-    'kolicina' => [
+    'amount' => [
         'filter' => FILTER_VALIDATE_INT,
         'options' => ['min_range' => 0]
     ]
@@ -36,8 +36,8 @@ switch ($data["do"]) {
         break;
     case "update_cart":
         if (isset($_SESSION["cart"][$data["id"]])) {
-            if ($data["kolicina"] > 0) {
-                $_SESSION["cart"][$data["id"]] = $data["kolicina"];
+            if ($data["amount"] > 0) {
+                $_SESSION["cart"][$data["id"]] = $data["amount"];
             } else {
                 unset($_SESSION["cart"][$data["id"]]);
             }
@@ -142,13 +142,13 @@ switch ($data["do"]) {
                         <h3>Cart</h3>
 
                         <?php
-                        $kosara = isset($_SESSION["cart"]) ? $_SESSION["cart"] : [];
+                        $cart = isset($_SESSION["cart"]) ? $_SESSION["cart"] : [];
 
-                        if ($kosara) {
+                        if ($cart) {
                              $znesek = 0;
-                                foreach ($kosara as $id => $kolicina):
+                                foreach ($cart as $id => $amount):
                                     $product = ProductDB::get(array("id" => $id));
-                                    $znesek += $product["price"] * $kolicina;
+                                    $znesek += $product["price"] * $amount;
                                     ?>
                                     <form action="<?= BASE_URL . "products" ?>" method="post">
                                         <input type="hidden" name="do" value="update_cart" />
@@ -162,7 +162,7 @@ switch ($data["do"]) {
                                               ?></strong> <span class="text-muted float-right"><?= number_format($product["price"], 2) ?> €</span>
                                               <div class="form-group row mt-2 pb-0">
                                                  <div class="col-6 pr-0">
-                                                    <input type="number" class="form-control short_input" name="kolicina" value="<?= $kolicina ?>" />
+                                                    <input type="number" class="form-control short_input" name="amount" value="<?= $amount ?>" />
                                                  </div>
                                                  <div class="col-2 pl-1">
                                                     <button class="update-cart btn btn-primary" type="submit"><i class="fas fa-sync-alt"></i></button>
