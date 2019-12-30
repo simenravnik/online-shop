@@ -5,6 +5,7 @@
     # PRODUCTS CONTROLLERS
     require_once("controllers/ProductsController.php");
     require_once("controllers/ProductsControllerREST.php");
+    require_once("controllers/AndroidREST.php");
 
     # REGISTRATION AND LOGIN CONTROLLERS
     require_once("controllers/LoginController.php");
@@ -149,6 +150,18 @@
                     break;
                 default: # GET
                     ProductsControllerREST::index();
+                    break;
+            }
+        },
+                
+        # ANDROID REST API
+        "/^api\/login$/" => function ($method) {
+            switch ($method) {
+                case "POST":
+                    AndroidREST::login();
+                    break;
+                default: # GET
+                    AndroidREST::login();
                     break;
             }
         },

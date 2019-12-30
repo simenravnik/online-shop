@@ -6,4 +6,4 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*) index.php/$1 [L,PT,QSA]
 
 RewriteCond %{HTTPS} off
-RewriteRule "(certificate|confirmation|login|registration|logout)" "https://%{HTTP_HOST}%{REQUEST_URI}"
+#RewriteRule "(certificate|confirmation|login|registration|logout)" "https://%{HTTP_HOST}%{REQUEST_URI}"
