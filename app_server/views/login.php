@@ -1,6 +1,6 @@
 <?php
 
-require_once("model/DB.php");
+require_once("app_server/model/DB.php");
 
 $email = $password = "";
 $email_err = $password_err = $activated_err = "";

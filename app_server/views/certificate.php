@@ -1,7 +1,7 @@
 <?php
 
 // Include config file
-require_once("model/DB.php");
+require_once("app_server/model/DB.php");
 
 // Define variables and initialize with empty values
 $email = $password = "";
