@@ -19,11 +19,18 @@ class AndroidREST {
         }
 
         $email_err = $password_err = $activated_err = "";
+        
         $message = "default";
-
+        $code = 0;
+        
         # parsing POST body into descriptor
-        $entityBody = file_get_contents('php://input');
-        $body = json_decode($entityBody, TRUE);
+        #$entityBody = file_get_contents('php://input');
+        #$body = json_decode($entityBody, TRUE);
+        $rules = [
+                'email' => FILTER_SANITIZE_SPECIAL_CHARS,
+                'password' => FILTER_SANITIZE_SPECIAL_CHARS
+            ];
+        $body = filter_input_array(INPUT_POST, $rules);
 
         $email = $body["email"];
         $password = $body["password"];
@@ -76,22 +83,29 @@ class AndroidREST {
                                             $_SESSION["zipcode_id"] = $zipcode_id;
                                             $_SESSION["phone"] = $phone;
                                             $_SESSION["activated"] = $activated;
+                                            
                                             $message = $_SESSION;
+                                            $code = 200;
                                         } else {
                                             $message = "$uporabnikEmail Not authorized user!";
+                                            $code = 404;
                                         }
                                     } else {
                                         $message = "Wrong password!";
+                                        $code = 404;
                                     }
                             } else {
                                 $message = "Your account is not of type customer.";
+                                $code = 404;
                             }
                         } else{
                             $message = "Something went wrong, try again.";
+                            $code = 404;
                         }
                     } else{
                         // Display an error message if email doesn't exist
                         $message = "Account with this email does not exist.";
+                        $code = 404;
                     }
                     // Close statement
                     $stmt->close();
@@ -102,6 +116,6 @@ class AndroidREST {
         }
 
         # blaze it
-        echo ViewHelper::renderJSON($message, 420);
+        echo ViewHelper::renderJSON($message, $code);
     }
 }
