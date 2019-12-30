@@ -4,7 +4,7 @@
     header("X-XSS-Protection: 1; mode=block");
 
     require_once("ViewHelper.php");
-    require_once("model/ProductDB.php");
+    require_once("app_server/model/ProductDB.php");
 
         class LoginController {
             public static function certificateAuth() {

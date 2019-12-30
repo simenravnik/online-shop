@@ -1,6 +1,6 @@
 <?php
 
-require_once 'model/AbstractDB.php';
+require_once 'app_server/model/AbstractDB.php';
 
 class ProductDB extends AbstractDB {
 

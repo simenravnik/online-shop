@@ -8,22 +8,22 @@
     require_once("app_api/UsersControllerREST.php");
 
     # PRODUCTS CONTROLLERS
-    require_once("controllers/ProductsController.php");
+    require_once("app_server/controllers/ProductsController.php");
 
     # REGISTRATION AND LOGIN CONTROLLERS
-    require_once("controllers/LoginController.php");
-    require_once("controllers/LogoutController.php");
-    require_once("controllers/RegistrationController.php");
+    require_once("app_server/controllers/LoginController.php");
+    require_once("app_server/controllers/LogoutController.php");
+    require_once("app_server/controllers/RegistrationController.php");
 
     # EDITING USERS
-    require_once("controllers/UsersController.php");
+    require_once("app_server/controllers/UsersController.php");
 
     # ORDERS
-    require_once("controllers/OrdersController.php");
-    require_once("controllers/OrderProductsController.php");
+    require_once("app_server/controllers/OrdersController.php");
+    require_once("app_server/controllers/OrderProductsController.php");
 
     # POST OFFICE
-    require_once("controllers/PostController.php");
+    require_once("app_server/controllers/PostController.php");
 
     define("BASE_URL", rtrim($_SERVER["SCRIPT_NAME"], "index.php"));
 

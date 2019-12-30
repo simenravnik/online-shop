@@ -3,7 +3,7 @@
     header('X-Content-Type-Options: nosniff');
     header("X-XSS-Protection: 1; mode=block");
 
-    require_once("model/UserDB.php");
+    require_once("app_server/model/UserDB.php");
     require_once("ViewHelper.php");
 
     class UsersController {

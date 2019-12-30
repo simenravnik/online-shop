@@ -3,31 +3,31 @@ header('X-Frame-Options: SAMEORIGIN');
 header('X-Content-Type-Options: nosniff');
 header("X-XSS-Protection: 1; mode=block");
 
-require_once("model/ProductDB.php");
-require_once("controllers/ProductsController.php");
+require_once("app_server/model/ProductDB.php");
+require_once("app_server/controllers/ProductsController.php");
 require_once("ViewHelper.php");
 
 class AndroidREST {
 
     public static function login() {
-        
+
         $mysqli = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
 
         // Check connection
         if($mysqli === false){
             die("ERROR: Could not connect. " . $mysqli->connect_error);
         }
-        
+
         $email_err = $password_err = $activated_err = "";
         $message = "default";
-        
+
         # parsing POST body into descriptor
         $entityBody = file_get_contents('php://input');
         $body = json_decode($entityBody, TRUE);
 
         $email = $body["email"];
         $password = $body["password"];
-        
+
         // Check if email is empty
         if(empty($email)){
             $email_err = "Please enter your email.";
@@ -100,7 +100,7 @@ class AndroidREST {
             // Close connection
             $mysqli->close();
         }
-        
+
         # blaze it
         echo ViewHelper::renderJSON($message, 420);
     }
