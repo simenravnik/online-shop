@@ -153,36 +153,51 @@ switch ($data["do"]) {
                                     <form action="<?= BASE_URL . "products" ?>" method="post">
                                         <input type="hidden" name="do" value="update_cart" />
                                         <input type="hidden" name="id" value="<?= $product["id"] ?>" />
-                                        <div class="list-group">
-                                           <li class="list-group-item">
-                                              <?=
-                                              (strlen($product["title"]) < 50) ?
+                                        <div class="list-group mb-1">
+                                           <li class="list-group-item pb-0">
+                                              <strong><?=
+                                              (strlen($product["title"]) < 15) ?
                                                       $product["title"] :
-                                                      substr($product["title"], 0, 26) . " ..."
-                                              ?> (<?= number_format($product["price"], 2) ?> €)
-                                              <div class="form-group row">
-                                                 <div class="col-8">
-                                                    <input type="number" class="form-control" name="kolicina" value="<?= $kolicina ?>" class="short_input" />
+                                                      substr($product["title"], 0, 15) . " ..."
+                                              ?></strong> <span class="text-muted float-right"><?= number_format($product["price"], 2) ?> €</span>
+                                              <div class="form-group row mt-2 pb-0">
+                                                 <div class="col-6 pr-0">
+                                                    <input type="number" class="form-control short_input" name="kolicina" value="<?= $kolicina ?>" />
                                                  </div>
-                                                 <div class="col-4">
+                                                 <div class="col-2 pl-1">
                                                     <button class="update-cart btn btn-primary" type="submit"><i class="fas fa-sync-alt"></i></button>
                                                  </div>
                                               </div>
 
                                            </li>
                                         </div>
-                                        <br>
                                     </form>
                                 <?php endforeach; ?>
-                             <p>Together: <b><?= number_format($znesek, 2) ?> EUR</b></p>
+                               <br>
+                             <table class="table table-clear">
+                            <tbody>
+                               <tr>
+                                  <td class="left">
+                                     <strong>Total</strong>
+                                  </td>
+                                  <td class="right">
+                                     <strong><?= number_format($znesek, 2) ?> €</strong>
+                                  </td>
+                               </tr>
+                            </tbody>
+                            </table>
 
-                             <form action="<?= BASE_URL . "orders/confirmation" ?>" method="POST">
-                                   <button type="submit" class="btn btn-success gumb"><i class="fas fa-receipt"></i></i> Complete order</button>
-                             </form>
-                             <br>
                              <form action="<?= BASE_URL . "products" ?>" method="POST">
-                                 <input type="hidden" name="do" value="purge_cart" />
-                                 <button type="submit" class="btn btn-danger gumb"><i class="fas fa-trash-alt"></i> Empty cart</button>
+                                <input type="hidden" name="do" value="purge_cart" />
+                                <td>
+                                  <a href="<?= BASE_URL . "orders/confirmation" ?>" class="btn btn-sm btn-primary my-1 my-sm-0">
+                                     <span class="fas fa-check mr-1"></span>
+                                     Complete</a>
+
+                                  <button type="submit" class="btn btn-sm btn-danger my-1 my-sm-0">
+                                    <span class="fas fa-trash mr-1"></span>
+                                    Empty cart</button>
+                                </td>
                              </form>
 
                         <?php } elseif(!isset($_SESSION["loggedin"])) { ?>
@@ -233,16 +248,28 @@ switch ($data["do"]) {
                        </a>
                        <div class="card-body">
                          <h4 class="card-title">
-                           <a href="<?= BASE_URL . "products/" . $product["id"] ?>"><?= $product["title"] ?></a>
+                           <a href="<?= BASE_URL . "products/" . $product["id"] ?>">
+                              <?=
+                              (strlen($product["title"]) < 15) ?
+                                      $product["title"] :
+                                      substr($product["title"], 0, 15) . " ..."
+                              ?>
+                           </a>
                          </h4>
                          <h5><?= number_format($product["price"], 2) ?> €</h5>
-                         <p class="card-text"><?= $product["description"] ?></p>
+                         <p class="card-text">
+                            <?=
+                            (strlen($product["description"]) < 45) ?
+                                    $product["description"] :
+                                    substr($product["description"], 0, 45) . " ..."
+                            ?>
+                         </p>
                          <form action="<?= BASE_URL . "products" ?>" method="post">
                             <input type="hidden" name="do" value="add_into_cart" />
                             <input type="hidden" name="id" value="<?= $product["id"] ?>" />
                             <?php if(isset($_SESSION["loggedin"]) && $_SESSION["type"] == 2) { ?>
                                 <?php if($product["activated"] == 1) { ?>
-                                    <button type="submit" class="btn btn-outline-warning add-to-cart"><i class="fas fa-cart-plus"></i> Add to cart</button>
+                                    <button type="submit" class="btn btn-sm btn-outline-warning add-to-cart"><i class="fas fa-cart-plus"></i> Add to cart</button>
                                 <?php } else { ?>
                                     <p>Not available at the moment.</p>
                                 <?php } ?>
