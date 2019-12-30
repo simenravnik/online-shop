@@ -10,7 +10,7 @@ class ProductRateDB extends AbstractDB {
    }
 
    public static function update(array $params) {
-      return parent::modify("UPDATE rate SET id_product = :id_order, "
+      return parent::modify("UPDATE rate SET "
                        . "num_ratings = :num_ratings, rating = :rating"
                        . " WHERE id_product = :id_product", $params);
    }

@@ -22,6 +22,16 @@
             }
         }
 
+        public static function edit($values) {
+            $data = array_filter($values, "self::getRules");
+
+            if (self::checkValues($data)) {
+                ProductRateDB::update($data);
+            } else {
+                echo ViewHelper::redirect(BASE_URL . "products");
+            }
+        }
+
         public static function delete($id) {
             $data = filter_input_array(INPUT_POST, [
                 'delete_confirmation' => FILTER_REQUIRE_SCALAR

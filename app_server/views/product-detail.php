@@ -1,3 +1,32 @@
+<?php
+
+   $id_product = $num_ratings = $rating = "";
+   $selected = "";
+   // Processing form data when submitted
+   if($_SERVER["REQUEST_METHOD"] == "POST") {
+      $id_product = $_POST["id_product"];
+      $num_ratings = $_POST["num_ratings"];
+      $rating = $_POST["rating"];
+
+      // the value selected from user
+      $selected = $_POST["selected"];
+
+      $sum = $rating * $num_ratings + $selected;
+      $num_ratings += 1;
+
+      $rating = $sum / $num_ratings;
+
+      $request = [
+         "id_product" => $id_product,
+         "num_ratings" => $num_ratings,
+         "rating" => $rating
+      ];
+
+      ProductRateController::edit($request);
+   }
+
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -7,8 +36,6 @@
         <meta name="author" content="Simen Ravnik">
 
         <title>Shop</title>
-
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link rel ="stylesheet" type="text/css" href="<?= CSS_URL . "bootstrap4-retro.min.css" ?>">
@@ -112,6 +139,11 @@
                       <?php } ?>
                    <?php } ?>
 
+                   Poslana post zahteva:
+                  <?= $id_product ?>
+                  <?= $num_ratings ?>
+                  <?= $rating ?>
+
                    <div class="card mt-4">
                      <img class="card-img-top img-fluid" src="http://placehold.it/900x400" alt="">
                      <div class="card-body">
@@ -119,11 +151,49 @@
                        <h4><?= $price ?> €</h4>
                        <p class="card-text"><?= $description ?></p>
                        <p class="card-text <?= $activated ? "text-success" : "text-danger" ?>"><?= $activated ? "Available." : "Not available at the moment." ?></p>
-                       <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
-                       4.0 stars
+                       <?php  $product_rate_data = ProductRateController::getProductRateById($id); ?>
+                       <span class="text-warning">
+                          <?php
+                           	$starNumber = (isset($product_rate_data['0']['rating'])) ? $product_rate_data['0']['rating'] : 0;
+                           	for( $x = 0; $x < 5; $x++ )
+                               {
+                                   if( floor($starNumber)-$x >= 1 )
+                                   { echo '<i class="fa fa-star"></i>'; }
+                                   elseif( $starNumber-$x > 0 )
+                                   { echo '<i class="fa fa-star-half-o"></i>'; }
+                                   else
+                                   { echo '<i class="fa fa-star-o"></i>'; }
+                               }
+                           ?>
+                       </span>
+                       <?= number_format($product_rate_data['0']['rating'], 1) ?> stars
                      </div>
                    </div>
 
+                   <br>
+                   <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                      <input type="hidden" name="id_product" value="<?= $product_rate_data['0']['id_product'] ?>" />
+                      <input type="hidden" name="num_ratings" value="<?= $product_rate_data['0']['num_ratings'] ?>" />
+                      <input type="hidden" name="rating" value="<?= $product_rate_data['0']['rating'] ?>" />
+                      <label for="select1">Rate this product</label>
+                      <div class="row">
+                         <div class="col-8">
+                            <div class="form-group">
+                              <select name="selected" class="form-control" id="select1">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option selected>5</option>
+                              </select>
+                            </div>
+                         </div>
+                         <div class="col">
+                            <button type="submit" class="btn btn-md btn-primary my-1 my-sm-0">
+                             Confirm</button>
+                         </div>
+                      </div>
+                    </form>
                    <br>
                </div>
 
@@ -137,6 +207,7 @@
         <!-- /.container -->
         <br>
 
+        <script src="https://kit.fontawesome.com/42e36ef1b7.js" crossorigin="anonymous"></script>
         <script src='https://www.google.com/recaptcha/api.js'></script>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
