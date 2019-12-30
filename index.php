@@ -2,10 +2,13 @@
 
     session_start();
 
+    # API
+    require_once("app_api/ProductsControllerREST.php");
+    require_once("app_api/AndroidREST.php");
+    require_once("app_api/UsersControllerREST.php");
+
     # PRODUCTS CONTROLLERS
     require_once("controllers/ProductsController.php");
-    require_once("controllers/ProductsControllerREST.php");
-    require_once("controllers/AndroidREST.php");
 
     # REGISTRATION AND LOGIN CONTROLLERS
     require_once("controllers/LoginController.php");
@@ -14,7 +17,6 @@
 
     # EDITING USERS
     require_once("controllers/UsersController.php");
-    require_once("controllers/UsersControllerREST.php");
 
     # ORDERS
     require_once("controllers/OrdersController.php");
