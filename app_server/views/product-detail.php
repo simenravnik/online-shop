@@ -142,11 +142,6 @@
                       <?php } ?>
                    <?php } ?>
 
-                   Poslana post zahteva:
-                  <?= $id_product ?>
-                  <?= $num_ratings ?>
-                  <?= $rating ?>
-
                    <div class="card mt-4">
                      <img class="card-img-top img-fluid" src="http://placehold.it/900x400" alt="">
                      <div class="card-body">
@@ -155,56 +150,60 @@
                        <p class="card-text"><?= $description ?></p>
                        <p class="card-text <?= $activated ? "text-success" : "text-danger" ?>"><?= $activated ? "Available." : "Not available at the moment." ?></p>
                        <?php  $product_rate_data = ProductRateController::getProductRateById($id); ?>
-                       <span class="text-warning">
-                          <?php
-                           	$starNumber = (isset($product_rate_data['0']['rating'])) ? $product_rate_data['0']['rating'] : 0;
-                           	for( $x = 0; $x < 5; $x++ )
-                               {
-                                   if( floor($starNumber)-$x >= 1 )
-                                   { echo '<i class="fa fa-star"></i>'; }
-                                   elseif( $starNumber-$x > 0 )
-                                   { echo '<i class="fa fa-star-half-alt"></i>'; }
-                                   else
-                                   { echo '<i class="fa fa-star-o"></i>'; }
-                               }
-                           ?>
-                       </span>
+                       <?php if ($product_rate_data['0']['rating'] != 0)  { ?>
+                          <span class="text-warning">
+                             <?php
+                              	$starNumber = (isset($product_rate_data['0']['rating'])) ? $product_rate_data['0']['rating'] : 0;
+                              	for( $x = 0; $x < 5; $x++ )
+                                  {
+                                      if( floor($starNumber)-$x >= 1 )
+                                      { echo '<i class="fa fa-star"></i>'; }
+                                      elseif( $starNumber-$x > 0 )
+                                      { echo '<i class="fa fa-star-half-alt"></i>'; }
+                                      else
+                                      { echo '<i class="fa fa-star-o"></i>'; }
+                                  }
+                              ?>
+                          </span>
                        <?= number_format($product_rate_data['0']['rating'], 1) ?> stars
+                    <?php } ?>
                      </div>
                    </div>
 
-                   <br>
-                   <?php if (empty($_SESSION["voted"][$product_rate_data['0']['id_product']])) { ?>
-                   <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                      <input type="hidden" name="id_product" value="<?= $product_rate_data['0']['id_product'] ?>" />
-                      <input type="hidden" name="num_ratings" value="<?= $product_rate_data['0']['num_ratings'] ?>" />
-                      <input type="hidden" name="rating" value="<?= $product_rate_data['0']['rating'] ?>" />
-                      <label for="select1">Rate this product</label>
-                      <div class="row">
-                         <div class="col-6">
-                            <div class="form-group">
-                              <select name="selected" class="form-control" id="select1">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option selected>5</option>
-                              </select>
+                   <?php if(isset($_SESSION["loggedin"]) && $_SESSION["type"] == 2) { ?>
+                         <br>
+                         <?php if (empty($_SESSION["voted"][$product_rate_data['0']['id_product']])) { ?>
+                         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                            <input type="hidden" name="id_product" value="<?= $product_rate_data['0']['id_product'] ?>" />
+                            <input type="hidden" name="num_ratings" value="<?= $product_rate_data['0']['num_ratings'] ?>" />
+                            <input type="hidden" name="rating" value="<?= $product_rate_data['0']['rating'] ?>" />
+                            <label for="select1">Rate this product</label>
+                            <div class="row">
+                               <div class="col-6">
+                                  <div class="form-group">
+                                    <select name="selected" class="form-control" id="select1">
+                                      <option>1</option>
+                                      <option>2</option>
+                                      <option>3</option>
+                                      <option>4</option>
+                                      <option selected>5</option>
+                                    </select>
+                                  </div>
+                               </div>
+                               <div class="col">
+                                  <button type="submit" class="btn btn-md btn-primary my-1 my-sm-0">
+                                   Confirm</button>
+                               </div>
                             </div>
-                         </div>
-                         <div class="col">
-                            <button type="submit" class="btn btn-md btn-primary my-1 my-sm-0">
-                             Confirm</button>
-                         </div>
-                      </div>
-                    </form>
-                 <?php } else if ($_SESSION["voted"][$product_rate_data['0']['id_product']] == 1) { ?>
-                    <div class="alert alert-success" role="alert">
-                       Thank you for your vote!
-                     </div>
-                 <?php
-                     $_SESSION["voted"][$product_rate_data['0']['id_product']] = 2;
-                  } ?>
+                          </form>
+                       <?php } else if ($_SESSION["voted"][$product_rate_data['0']['id_product']] == 1) { ?>
+                          <div class="alert alert-success" role="alert">
+                             Thank you for your vote!
+                           </div>
+                       <?php
+                           $_SESSION["voted"][$product_rate_data['0']['id_product']] = 2;
+                        } ?>
+                     <?php } ?>
                    <br>
                </div>
 

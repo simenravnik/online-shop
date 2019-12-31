@@ -4,6 +4,7 @@
     header("X-XSS-Protection: 1; mode=block");
 
     require_once("app_server/model/ProductDB.php");
+    require_once("app_server/controllers/ProductRateController.php");
     require_once("ViewHelper.php");
 
     class ProductsController {
@@ -39,6 +40,11 @@
 
             if (self::checkValues($data)) {
                 $id = ProductDB::insert($data);
+                ProductRateController::add([
+                   "id_product" => $id,
+                   "num_ratings" => 0,
+                   "rating" => 0
+                ]);
                 echo ViewHelper::redirect(BASE_URL . "products/" . $id);
             } else {
                 self::addForm($data);
