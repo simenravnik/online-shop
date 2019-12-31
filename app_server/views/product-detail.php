@@ -22,6 +22,9 @@
          "rating" => $rating
       ];
 
+      // set that users have voted
+      $_SESSION["voted"][$id_product] = 1;
+
       ProductRateController::edit($request);
    }
 
@@ -160,7 +163,7 @@
                                    if( floor($starNumber)-$x >= 1 )
                                    { echo '<i class="fa fa-star"></i>'; }
                                    elseif( $starNumber-$x > 0 )
-                                   { echo '<i class="fa fa-star-half-o"></i>'; }
+                                   { echo '<i class="fa fa-star-half-alt"></i>'; }
                                    else
                                    { echo '<i class="fa fa-star-o"></i>'; }
                                }
@@ -171,13 +174,14 @@
                    </div>
 
                    <br>
+                   <?php if (empty($_SESSION["voted"][$product_rate_data['0']['id_product']])) { ?>
                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                       <input type="hidden" name="id_product" value="<?= $product_rate_data['0']['id_product'] ?>" />
                       <input type="hidden" name="num_ratings" value="<?= $product_rate_data['0']['num_ratings'] ?>" />
                       <input type="hidden" name="rating" value="<?= $product_rate_data['0']['rating'] ?>" />
                       <label for="select1">Rate this product</label>
                       <div class="row">
-                         <div class="col-8">
+                         <div class="col-6">
                             <div class="form-group">
                               <select name="selected" class="form-control" id="select1">
                                 <option>1</option>
@@ -194,6 +198,13 @@
                          </div>
                       </div>
                     </form>
+                 <?php } else if ($_SESSION["voted"][$product_rate_data['0']['id_product']] == 1) { ?>
+                    <div class="alert alert-success" role="alert">
+                       Thank you for your vote!
+                     </div>
+                 <?php
+                     $_SESSION["voted"][$product_rate_data['0']['id_product']] = 2;
+                  } ?>
                    <br>
                </div>
 
