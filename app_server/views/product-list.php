@@ -271,9 +271,9 @@ $search = "";
                             <h5><?= number_format($product["price"], 2) ?> €</h5>
                             <p class="card-text">
                                <?=
-                               (strlen($product["description"]) < 45) ?
+                               (strlen($product["description"]) < 40) ?
                                        $product["description"] :
-                                       substr($product["description"], 0, 45) . " ..."
+                                       substr($product["description"], 0, 40) . " ..."
                                ?>
                             </p>
                             <form action="<?= BASE_URL . "products" ?>" method="post">
