@@ -2,7 +2,20 @@
 
  $con = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_NAME) or die('Unable to Connect');
 
- if($_SERVER['REQUEST_METHOD']=='POST'){
+ if($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['img'])){
+
+   $path = $_POST['img'];
+   $sql = "DELETE FROM images WHERE img='$path';";
+
+   if ($con->query($sql) === TRUE) {
+      echo "";
+   } else {
+       echo "Error deleting record: " . $con->error;
+   }
+
+   $con->close();
+
+ } else if($_SERVER['REQUEST_METHOD']=='POST'){
 
  //checking the required parameters from the request
  if(isset($_FILES['image']['name'])){
@@ -240,11 +253,20 @@ if($extension=="jpg" || $extension=="jpeg" )
                         $path = BASE_URL . $img;
                       ?>
                       <div class="col-lg-3 col-md-4 col-6">
-                        <a href="#" class="d-block mb-4 h-100">
-                              <img class="img-fluid img-thumbnail" src="<?= $path ?>" alt="">
-                            </a>
+                          <img class="img-fluid img-thumbnail" src="<?= $path ?>" alt="">
+                          <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>"method="POST">
+                             <input type="text" name="img" class="form-control" value="<?= $img ?>" hidden/>
+                             <div class="mt-1">
+                                <button type="submit" name="delete" class="btn btn-sm btn-block btn-outline-danger my-1 my-sm-0">Remove</button>
+                             </div>
+                          </form>
                       </div>
                      <?php } ?>
+                    </div>
+
+                    <br>
+                    <div class="float-right">
+                       <a href="<?= BASE_URL . "products/" . $id_product ?>" class="btn btn-md btn-primary my-1 my-sm-0">Done</a>
                     </div>
 
                   <br>
