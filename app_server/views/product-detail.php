@@ -157,9 +157,9 @@
 
                    <div class="card mt-4">
                      <?php if (!empty($path)) { ?>
-                        <img class="card-img-top img-fluid" src="<?= $path ?>" alt="">
+                        <img class="product-img card-img-top img-fluid" src="<?= $path ?>" alt="">
                      <?php } else { ?>
-                        <img class="card-img-top img-fluid" src="https://www.tellerreport.com/images/no-image.png" alt="">
+                        <img class="product-img card-img-top img-fluid" src="https://www.tellerreport.com/images/no-image.png" alt="">
                      <?php } ?>
                      <div class="card-body">
                        <h3 class="card-title"><?= $title ?></h3>
