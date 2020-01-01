@@ -149,18 +149,17 @@
                      $first_img  = "";
 
                      while($row=mysqli_fetch_array($sql)) {
-                        if (empty($first_img)) {
-                           $first_img = $row['img'];
-                        }
-                     $img = $row['img'];
+                         $img = $row['img'];
+                         $path = BASE_URL . $img;
+                         break;
                      }
                      ?>
 
                    <div class="card mt-4">
-                     <?php if (!empty($first_img)) { ?>
-                        <img class="card-img-top img-fluid" src="<?="../" . $img ?>" alt="">
+                     <?php if (!empty($path)) { ?>
+                        <img class="card-img-top img-fluid" src="<?= $path ?>" alt="">
                      <?php } else { ?>
-                        <img class="card-img-top img-fluid" src="http://placehold.it/900x400" alt="">
+                        <img class="card-img-top img-fluid" src="https://www.tellerreport.com/images/no-image.png" alt="">
                      <?php } ?>
                      <div class="card-body">
                        <h3 class="card-title"><?= $title ?></h3>
@@ -222,7 +221,42 @@
                            $_SESSION["voted"][$product_rate_data['0']['id_product']] = 2;
                         } ?>
                      <?php } ?>
+
+                   <?php
+                   $con = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_NAME) or die('Unable to Connect');
+
+                   $sql =mysqli_query($con, "SELECT * FROM images where id_product = $id;");
+
+                   ?>
                    <br>
+                   <br>
+
+                    <h2>Product gallery</h2>
+
+                    <hr class="mt-2 mb-5">
+
+                    <div class="row text-center text-lg-left">
+                      <?php while($row=mysqli_fetch_array($sql)) {
+                        $img = $row['img'];
+                        $path = BASE_URL . $img;
+                      ?>
+                      <div class="col-lg-3 col-md-4 col-6">
+                          <img class="img-fluid img-thumbnail" src="<?= $path ?>" alt="">
+                      </div>
+                     <?php } ?>
+                    </div>
+
+                     <?php if(isset($_SESSION["loggedin"]) && $_SESSION["type"] == 1) { ?>
+                       <br>
+                       <div class="float-right">
+                          <a href="<?= BASE_URL . "products/" . $id . "/images" ?>" class="btn btn-md btn-primary my-1 my-sm-0">
+                             <span class="fas fa-edit mr-1"></span>
+                             Edit photos
+                          </a>
+                       </div>
+                    <?php } ?>
+
+                  <br>
                </div>
 
             </div>
