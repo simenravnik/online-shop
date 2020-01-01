@@ -209,9 +209,21 @@ INSERT INTO `rate` VALUES
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
-CREATE TABLE `images` (
- `id` int(11) NOT NULL AUTO_INCREMENT,
- `image` longblob NOT NULL,
- `created` datetime NOT NULL,
- PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+DROP TABLE IF EXISTS `images`;
+CREATE TABLE images (
+	id int (30) NOT NULL AUTO_INCREMENT,
+	img varchar(255) NOT NULL,
+   id_product int(11) NOT NULL,
+    PRIMARY KEY (id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_slovenian_ci;
+
+LOCK TABLES `images` WRITE;
+/*!40000 ALTER TABLE `images` DISABLE KEYS */;
+INSERT INTO `images` VALUES
+(1, 'static/img/milk.jpeg', 1),
+(2, 'static/img/eggs.jpg', 2),
+(3, 'static/img/bread.jpg', 3);
+/*!40000 ALTER TABLE `images` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

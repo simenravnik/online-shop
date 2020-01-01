@@ -28,6 +28,9 @@
     # RATING
     require_once("app_server/controllers/ProductRateController.php");
 
+    # IMAGES
+    require_once("app_server/controllers/ImagesController.php");
+
     define("BASE_URL", rtrim($_SERVER["SCRIPT_NAME"], "index.php"));
 
     define("IMAGES_URL", rtrim($_SERVER["SCRIPT_NAME"], "index.php") . "static/images/");
@@ -36,6 +39,10 @@
     $path = isset($_SERVER["PATH_INFO"]) ? trim($_SERVER["PATH_INFO"], "/") : "";
 
     $urls = [
+        # IMAGES
+        "/^images$/" => function ($method) {
+            ImagesController::index();
+        },
         # PRODUCTS
         "/^products$/" => function ($method) {
             ProductsController::index();

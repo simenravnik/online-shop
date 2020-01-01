@@ -142,8 +142,26 @@
                       <?php } ?>
                    <?php } ?>
 
+                   <?php
+                     $con = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_NAME) or die('Unable to Connect');
+
+                     $sql =mysqli_query($con, "SELECT * FROM images where id_product = $id;");
+                     $first_img  = "";
+
+                     while($row=mysqli_fetch_array($sql)) {
+                        if (empty($first_img)) {
+                           $first_img = $row['img'];
+                        }
+                     $img = $row['img'];
+                     }
+                     ?>
+
                    <div class="card mt-4">
-                     <img class="card-img-top img-fluid" src="http://placehold.it/900x400" alt="">
+                     <?php if (!empty($first_img)) { ?>
+                        <img class="card-img-top img-fluid" src="<?="../" . $img ?>" alt="">
+                     <?php } else { ?>
+                        <img class="card-img-top img-fluid" src="http://placehold.it/900x400" alt="">
+                     <?php } ?>
                      <div class="card-body">
                        <h3 class="card-title"><?= $title ?></h3>
                        <h4><?= $price ?> €</h4>
