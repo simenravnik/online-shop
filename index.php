@@ -39,16 +39,16 @@
     $path = isset($_SERVER["PATH_INFO"]) ? trim($_SERVER["PATH_INFO"], "/") : "";
 
     $urls = [
-        # IMAGES
-        "/^images$/" => function ($method) {
-            ImagesController::index();
-        },
         # PRODUCTS
         "/^products$/" => function ($method) {
             ProductsController::index();
         },
         "/^products\/(\d+)$/" => function ($method, $id) {
             ProductsController::get($id);
+        },
+        # IMAGES
+        "/^products\/(\d+)\/images$/" => function ($method, $id) {
+            ImagesController::index($id);
         },
         "/^products\/add$/" => function ($method) {
             if ($method == "POST") {

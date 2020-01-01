@@ -45,7 +45,7 @@
                    "num_ratings" => 0,
                    "rating" => 0
                 ]);
-                echo ViewHelper::redirect(BASE_URL . "products/" . $id);
+                echo ViewHelper::redirect(BASE_URL . "products/" . $id . "/images");
             } else {
                 self::addForm($data);
             }

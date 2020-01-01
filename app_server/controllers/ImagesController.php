@@ -7,9 +7,9 @@
 
         class ImagesController {
 
-            public static function index() {
+            public static function index($id) {
                 $values = [
-                   "id_product" => 1
+                   "id_product" => $id
                 ];
                 echo ViewHelper::render("app_server/views/upload-image.php", $values);
             }
