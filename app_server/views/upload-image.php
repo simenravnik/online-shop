@@ -257,7 +257,7 @@ if($extension=="jpg" || $extension=="jpeg" )
                              <img class="img-fluid img-thumbnail" src="<?= $path ?>" alt="">
                              <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>"method="POST">
                                 <input type="text" name="img" class="form-control" value="<?= $img ?>" hidden/>
-                                <div class="mt-1">
+                                <div class="mt-1 mb-3">
                                    <button type="submit" name="delete" class="btn btn-sm btn-block btn-outline-danger my-1 my-sm-0">Remove</button>
                                 </div>
                              </form>

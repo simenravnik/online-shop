@@ -240,7 +240,7 @@
                         $img = $row['img'];
                         $path = BASE_URL . $img;
                       ?>
-                      <div class="col-lg-3 col-md-4 col-6">
+                      <div class="col-lg-3 col-md-4 col-6 mb-3">
                           <img class="img-fluid img-thumbnail" src="<?= $path ?>" alt="">
                       </div>
                      <?php } ?>
