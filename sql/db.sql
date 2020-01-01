@@ -42,9 +42,9 @@ CREATE TABLE `product` (
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
 INSERT INTO `product` VALUES
-(1,'Mleko','Polnomastno mleko z najvec okusa.', 2.00, true),
-(2,'Jajca','Jajca baterijske reje (niso videla svetlobe).', 5.99, true),
-(3,'Kruh','Hribovc, domaci.', 2.99, true);
+(1,'Milk','A pioneer and champion of Slovenian milk. Many have trusted it for half a century, since its very beginning in 1967. This very flavour is best for the home table, be it in combination with cocoa, in coffee or smoothie, as an ingredient in your most favourite cake or simply as a glass of pure alpine milk.', 2.00, true),
+(2,'Eggs','Eggs are a great source of protein, but knowing where they come from can be even more important to your health.', 5.99, true),
+(3,'Bread','Brown bread is a designation often given to breads made with significant amounts of whole grain flour, usually wheat, and sometimes dark-colored ingredients such as molasses or coffee.', 2.99, true);
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -221,7 +221,7 @@ CREATE TABLE images (
 LOCK TABLES `images` WRITE;
 /*!40000 ALTER TABLE `images` DISABLE KEYS */;
 INSERT INTO `images` VALUES
-(1, 'static/img/milk.jpeg', 1),
+(1, 'static/img/milk.jpg', 1),
 (2, 'static/img/eggs.jpg', 2),
 (3, 'static/img/bread.jpg', 3);
 /*!40000 ALTER TABLE `images` ENABLE KEYS */;
