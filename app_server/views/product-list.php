@@ -240,7 +240,23 @@ $search = "";
                       <div class="col-lg-4 col-md-6 mb-4">
                         <div class="card h-100">
                           <a href="<?= BASE_URL . "products/" . $product["id"] ?>">
-                             <img class="item-img card-img-top" src="https://hips.hearstapps.com/delish/assets/18/08/1519321899-hard-boiled-eggs-horizontal.jpg" alt="">
+                             <?php
+                             $con = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_NAME) or die('Unable to Connect');
+
+                             $id_product = $product["id"];
+                             $sql =mysqli_query($con, "SELECT * FROM images where id_product = $id_product;");
+
+                             while($row=mysqli_fetch_array($sql)) {
+                                 $img = $row['img'];
+                                 $path = BASE_URL . $img;
+                                 break;
+                             }
+                             ?>
+                             <?php if (!empty($path)) { ?>
+                                <img class="item-img card-img-top" src="<?= $path ?>" alt="">
+                             <?php } else { ?>
+                                <img class="item-img card-img-top" src="https://www.tellerreport.com/images/no-image.png" alt="">
+                             <?php } ?>
                           </a>
                           <div class="card-body">
                             <h4 class="card-title">
