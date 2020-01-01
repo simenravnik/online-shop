@@ -29,6 +29,10 @@ $ sudo cp ~/NetBeansProjects/online-shop/certs/conf/* /etc/apache2/sites-availab
 $ sudo service apache2 restart
 $ sudo service apache2 reload
 
+# install php graphics library GD
+$ sudo apt-get install php-gd
+$ sudo service apache2 restart
+
 # import init database
 $ mysql -u root -p < ~/NetBeansProjects/online-shop/sql/db.sql
 ```
