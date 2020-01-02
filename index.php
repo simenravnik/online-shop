@@ -6,6 +6,7 @@
     require_once("app_api/ProductsControllerREST.php");
     require_once("app_api/AndroidREST.php");
     require_once("app_api/UsersControllerREST.php");
+    require_once("app_api/OrdersREST.php");
 
     # PRODUCTS CONTROLLERS
     require_once("app_server/controllers/ProductsController.php");
@@ -200,6 +201,15 @@
                 default: # GET
                     AndroidREST::login();
                     break;
+            }
+        },
+                
+        # ORDERS REST API
+        "/^api\/orders\/(\d+)$/" => function ($method, $id) {
+            switch ($method) {
+               default: # GET
+                   OrdersREST::getUserOrders($id);
+                   break;
             }
         },
     ];
