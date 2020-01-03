@@ -207,8 +207,16 @@
         # ORDERS REST API
         "/^api\/orders\/(\d+)$/" => function ($method, $id) {
             switch ($method) {
-               default: # GET
+                default: # GET
                    OrdersREST::getUserOrders($id);
+                   break;
+            }
+        },
+                
+        "/^api\/orders\/products\/(\d+)$/" => function ($method, $id) {
+            switch ($method) {
+                default: # GET
+                   OrdersREST::getOrderProducts($id);
                    break;
             }
         },

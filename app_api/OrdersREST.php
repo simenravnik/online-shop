@@ -34,10 +34,7 @@ class OrdersREST {
             $result = $stmt->get_result();   // You get a result object now
                 
             if($result->num_rows > 0) {     // Note: change to $result->...!
-                $number = 1;
                 while($data = $result->fetch_assoc()) {
-                    $name = "order #" . $number;
-                    $number = $number + 1;
                     array_push($resultArray,$data);
                 }
             }
@@ -49,5 +46,10 @@ class OrdersREST {
         // Close connection
         $mysqli->close();
         echo ViewHelper::renderJSON($resultArray, 200);
+    }
+    
+    public static function getOrderProducts($id) {
+        $result = OrderProductDB::get(["id_order" => $id]);
+        echo ViewHelper::renderJSON($result, 200);
     }
 }
