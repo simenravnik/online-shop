@@ -33,6 +33,9 @@ $ sudo service apache2 reload
 $ sudo apt-get install php-gd
 $ sudo service apache2 restart
 
+# grant all permissions to img/ folder
+$ sudo chmod 777 ~/NetBeansProjects/online-shop/static/img/
+
 # import init database
 $ mysql -u root -p < ~/NetBeansProjects/online-shop/sql/db.sql
 ```
@@ -93,6 +96,10 @@ Your Certificates > Import
 Import:
 ~/NetBeansProjects/online-shop/cert/Simen.p12
 
+Password: ep
+
 Import:
 ~/NetBeansProjects/online-shop/cert/Jure.p12
+
+Password: ep
 ```
