@@ -212,10 +212,13 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `images`;
 CREATE TABLE images (
-	id int (30) NOT NULL AUTO_INCREMENT,
-	img varchar(255) NOT NULL,
-   id_product int(11) NOT NULL,
-    PRIMARY KEY (id)
+    id int (30) NOT NULL AUTO_INCREMENT,
+    img varchar(255) NOT NULL,
+    id_product int(11) NOT NULL,
+    PRIMARY KEY (id),
+    CONSTRAINT `FK_image_product` FOREIGN KEY(`id_product`) REFERENCES `product`(`id`)
+      ON DELETE CASCADE
+      ON UPDATE NO ACTION
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_slovenian_ci;
 
 LOCK TABLES `images` WRITE;
