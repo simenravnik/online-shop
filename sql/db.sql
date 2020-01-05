@@ -122,7 +122,10 @@ CREATE TABLE `order_product` (
   PRIMARY KEY (`id_product`, `id_order`),
   CONSTRAINT `FK_oa_order` FOREIGN KEY(`id_order`) REFERENCES `shop_order`(`id`)
     ON DELETE CASCADE
-    ON UPDATE NO ACTION
+    ON UPDATE NO ACTION,
+    CONSTRAINT `FK_product_order` FOREIGN KEY(`id_product`) REFERENCES `product`(`id`)
+      ON DELETE CASCADE
+      ON UPDATE NO ACTION
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_slovenian_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
